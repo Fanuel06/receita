@@ -21,6 +21,7 @@ if(isset($_GET['id'])) {
 </head>
 <body>
     <header>
+        <h1>Professor lindaO!!!</h1>
         <nav>
             <ul class="rem">
                 <li><a href="../despesa/despesa.php">Despesas</a></li>
@@ -46,5 +47,4 @@ if(isset($_GET['id'])) {
 </body>
 </html>
 <?php
-}
 ?>
