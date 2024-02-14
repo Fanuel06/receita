@@ -1,12 +1,24 @@
 <?php
 require "../config.php";
+session_start();
 
-$sql = "SELECT * FROM categoria";
-$sql = $pdo->prepare($sql);
-$sql->execute();
+if (!isset($_SESSION['id'])) {
+    header("Location: ../usuario/login.php");
+    exit;
+}
 
-$dadosCat = $sql->fetchAll(PDO::FETCH_ASSOC);
+$user_id = $_SESSION['id'];
+
+$user_name = $_SESSION['usuario'];
+
+$table_name = "categoria_{$user_id}_{$user_name}";
+
+$sql_categoria = "SELECT * FROM categoria_{$user_id}_{$user_name}";
+$stmt_categoria = $pdo->prepare($sql_categoria);
+$stmt_categoria->execute();
+$dadosCat = $stmt_categoria->fetchAll(PDO::FETCH_ASSOC);
 ?>
+
 
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -36,7 +48,7 @@ $dadosCat = $sql->fetchAll(PDO::FETCH_ASSOC);
 
         <label>
           Categoria
-          <input type="text" name="categoria" required>
+          <input type="text" name="nome" required>
         </label>
         <label>
           <button type="submit">Adicionar</button>
@@ -55,7 +67,7 @@ $dadosCat = $sql->fetchAll(PDO::FETCH_ASSOC);
           <?php foreach ($dadosCat as $categoria): ?>
             <tr>
               <td>
-                <?= $categoria['descricao'] ?>
+                <?= $categoria['nome'] ?>
               </td>
               <td>
                 <a href="./deletarCategoria.php?id=<?= $categoria['id'] ?>">

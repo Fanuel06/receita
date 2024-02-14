@@ -1,15 +1,28 @@
 <?php
 require "../config.php";
+session_start();
 
-$sql = "SELECT * FROM receita";
-$stmt = $pdo->prepare($sql);
-$stmt->execute();
-$dados = $stmt->fetchAll(PDO::FETCH_ASSOC);
+if (!isset($_SESSION['id'])) {
+    header("Location: ../usuario/login.php");
+    exit;
+}
 
-$sql = "SELECT * FROM categoria";
-$stmt = $pdo->prepare($sql);
-$stmt->execute();
-$dadosCat = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$user_id = $_SESSION['id'];
+
+$user_name = $_SESSION['usuario'];
+
+$table_name = "receitas_{$user_id}_{$user_name}";
+
+$sql_receita = "SELECT * FROM {$table_name}";
+$stmt_receita = $pdo->prepare($sql_receita);
+$stmt_receita->execute();
+$dados = $stmt_receita->fetchAll(PDO::FETCH_ASSOC);
+
+
+$sql_categoria = "SELECT * FROM categoria_{$user_id}_{$user_name}";
+$stmt_categoria = $pdo->prepare($sql_categoria);
+$stmt_categoria->execute();
+$dadosCat = $stmt_categoria->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -27,12 +40,11 @@ $dadosCat = $stmt->fetchAll(PDO::FETCH_ASSOC);
   <header>
     <nav>
       <ul class="rem">
-        <li><a href="..//despesa/despesa.php">Despesas</a></li>
-        <li><a href="..//categoria/categoria.php">Categorias</a></li>
+        <li><a href="../despesa/despesa.php">Despesas</a></li>
+        <li><a href="../categoria/categoria.php">Categorias</a></li>
       </ul>
     </nav>
   </header>
-
   <main>
     <section class="formulario">
       <form action="./cadastrarReceita.php" method="get">
@@ -53,7 +65,7 @@ $dadosCat = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <option value=""></option>
             <?php foreach ($dadosCat as $categoria): ?>
               <option value="<?= $categoria['id'] ?>">
-                <?= $categoria['descricao'] ?>
+                <?= $categoria['nome'] ?>
               </option>
             <?php endforeach; ?>
           </select>
@@ -99,7 +111,7 @@ $dadosCat = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 $categoriaEncontrada = '';
                 foreach ($dadosCat as $categoria) {
                   if ($categoria['id'] == $dado['categoria_id']) {
-                    $categoriaEncontrada = $categoria['descricao'];
+                    $categoriaEncontrada = $categoria['nome'];
                     break;
                   }
                 }

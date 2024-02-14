@@ -1,14 +1,24 @@
 <?php
 require "../config.php";
+session_start();
 
-$categoria = $_GET["categoria"];
+if (!isset($_SESSION['id'])) {
+    header("Location: ../usuario/login.php");
+    exit;
+}
 
-$sql = "INSERT INTO categoria (descricao) VALUES (:descricao)";
+$user_id = $_SESSION['id'];
+$user_name = $_SESSION['usuario'];
+$table_name = "categoria_{$user_id}_{$user_name}";
 
-$sql = $pdo->prepare($sql);
-$sql->bindValue(":descricao", $categoria);
+$nome= $_GET["nome"];
 
-$sql->execute();
+$sql = "INSERT INTO $table_name (nome) VALUES
+        (:nome)";
+
+$stmt = $pdo->prepare($sql);
+$stmt->bindValue(":nome", $nome);
+$stmt->execute();
 
 header("Location: categoria.php");
 exit;

@@ -1,22 +1,36 @@
 <?php
 require "../config.php";
+session_start();
+
+if (!isset($_SESSION['id'])) {
+  header("Location: ../usuario/login.php");
+  exit;
+}
+
+$user_id = $_SESSION['id'];
+
+$user_name = $_SESSION['usuario'];
+
+$table_name = "despesas_{$user_id}_{$user_name}";
 
 $id = $_GET['id'];
-$sql = "SELECT * FROM despesa WHERE id = :id";
+
+$sql = "SELECT * FROM {$table_name} WHERE id = :id";
 $sql = $pdo->prepare($sql);
 $sql->bindValue(":id", $id);
 $sql->execute();
 $item = $sql->fetch(PDO::FETCH_ASSOC);
 
-$sql = "SELECT * FROM despesa";
-$stmt = $pdo->prepare($sql);
-$stmt->execute();
-$dados = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$sql_receita = "SELECT * FROM {$table_name}";
+$stmt_receita = $pdo->prepare($sql_receita);
+$stmt_receita->execute();
+$dados = $stmt_receita->fetchAll(PDO::FETCH_ASSOC);
 
-$sql = "SELECT * FROM categoria";
-$stmt = $pdo->prepare($sql);
-$stmt->execute();
-$dadosCat = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+$sql_categoria = "SELECT * FROM categoria_{$user_id}_{$user_name}";
+$stmt_categoria = $pdo->prepare($sql_categoria);
+$stmt_categoria->execute();
+$dadosCat = $stmt_categoria->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -26,7 +40,7 @@ $dadosCat = $stmt->fetchAll(PDO::FETCH_ASSOC);
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Editar Despesas</title>
+  <title>Receitas</title>
   <link rel="stylesheet" href="./styles/style.css">
 </head>
 
@@ -34,9 +48,8 @@ $dadosCat = $stmt->fetchAll(PDO::FETCH_ASSOC);
   <header>
     <nav>
       <ul class="rem">
-        <li><a href="..//despesa/despesa.php">Despesas</a></li>
-        <li><a href="..//receita/receita.php">Receitas</a></li>
-        <li><a href="..//categoria/categoria.php">Categorias</a></li>
+        <li><a href="../receitas/receitas.php">Receitas</a></li>
+        <li><a href="#">Categorias</a></li>
       </ul>
     </nav>
   </header>
@@ -63,7 +76,7 @@ $dadosCat = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <option value=""></option>
             <?php foreach ($dadosCat as $categoria): ?>
               <option value="<?= $categoria['id'] ?>">
-                <?= $categoria['descricao'] ?>
+                <?= $categoria['nome'] ?>
               </option>
             <?php endforeach; ?>
           </select>

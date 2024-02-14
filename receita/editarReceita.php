@@ -1,22 +1,36 @@
 <?php
 require "../config.php";
+session_start();
+
+if (!isset($_SESSION['id'])) {
+    header("Location: ../usuario/login.php");
+    exit;
+}
+
+$user_id = $_SESSION['id'];
+
+$user_name = $_SESSION['usuario'];
+
+$table_name = "receitas_{$user_id}_{$user_name}";
 
 $id = $_GET['id'];
-$sql = "SELECT * FROM receita WHERE id = :id";
+
+$sql = "SELECT * FROM {$table_name} WHERE id = :id";
 $sql = $pdo->prepare($sql);
 $sql->bindValue(":id", $id);
 $sql->execute();
 $item = $sql->fetch(PDO::FETCH_ASSOC);
 
-$sql = "SELECT * FROM receita";
-$stmt = $pdo->prepare($sql);
-$stmt->execute();
-$dados = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$sql_receita = "SELECT * FROM {$table_name}";
+$stmt_receita = $pdo->prepare($sql_receita);
+$stmt_receita->execute();
+$dados = $stmt_receita->fetchAll(PDO::FETCH_ASSOC);
 
-$sql = "SELECT * FROM categoria";
-$stmt = $pdo->prepare($sql);
-$stmt->execute();
-$dadosCat = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+$sql_categoria = "SELECT * FROM categoria_{$user_id}_{$user_name}";
+$stmt_categoria = $pdo->prepare($sql_categoria);
+$stmt_categoria->execute();
+$dadosCat = $stmt_categoria->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -63,7 +77,7 @@ $dadosCat = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <option value=""></option>
             <?php foreach ($dadosCat as $categoria): ?>
               <option value="<?= $categoria['id'] ?>">
-                <?= $categoria['descricao'] ?>
+                <?= $categoria['nome'] ?>
               </option>
             <?php endforeach; ?>
           </select>

@@ -10,4 +10,6 @@ try {
   $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {
   echo "ERRO: " . $e->getMessage();
+  $pdo = null;
 }
+?>
