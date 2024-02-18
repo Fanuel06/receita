@@ -11,7 +11,6 @@ $user_id = $_SESSION['id'];
 
 $user_name = $_SESSION['usuario'];
 
-// Verificar o total de notificações pendentes para o usuário atual
 $sql_total_notificacoes = "SELECT COUNT(*) AS total FROM notificacoes WHERE user_id = :user_id";
 $stmt_total_notificacoes = $pdo->prepare($sql_total_notificacoes);
 $stmt_total_notificacoes->bindParam(':user_id', $user_id, PDO::PARAM_INT);
@@ -38,28 +37,31 @@ $stmt_receitas_a_receber->execute();
 $receitas_a_receber = $stmt_receitas_a_receber->fetchAll(PDO::FETCH_ASSOC);
 
 // Inserir notificações para as receitas a receber cuja data foi atingida
+// Inserir notificações para as receitas a receber cuja data foi atingida
 foreach ($receitas_a_receber as $receita) {
-    $descricao = "Receita a receber: " . $receita['descricao'];
+  $id_receita = $receita['id']; // Definindo o ID da receita
+
+  $descricao = "Receita a receber (" . $id_receita . "): " . $receita['descricao']; // Concatenando o ID da receita com a descrição
+
+  // Verificar se a notificação já existe antes de inseri-la novamente
+  $sql_verificar_notificacao = "SELECT COUNT(*) AS count FROM notificacoes WHERE user_id = :user_id AND descricao = :descricao";
+  $stmt_verificar_notificacao = $pdo->prepare($sql_verificar_notificacao);
+  $stmt_verificar_notificacao->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+  $stmt_verificar_notificacao->bindParam(':descricao', $descricao, PDO::PARAM_STR);
+  $stmt_verificar_notificacao->execute();
+  $result_verificar_notificacao = $stmt_verificar_notificacao->fetch(PDO::FETCH_ASSOC);
+
+  if ($result_verificar_notificacao['count'] == 0) {
+    // A notificação não existe, então inseri-la
     $data = date("Y-m-d"); // Data atual
-    
-    // Verificar se a notificação já existe antes de inseri-la novamente
-    $sql_verificar_notificacao = "SELECT COUNT(*) AS count FROM notificacoes WHERE user_id = :user_id AND descricao = :descricao AND data = :data";
-    $stmt_verificar_notificacao = $pdo->prepare($sql_verificar_notificacao);
-    $stmt_verificar_notificacao->bindParam(':user_id', $user_id, PDO::PARAM_INT);
-    $stmt_verificar_notificacao->bindParam(':descricao', $descricao, PDO::PARAM_STR);
-    $stmt_verificar_notificacao->bindParam(':data', $data, PDO::PARAM_STR);
-    $stmt_verificar_notificacao->execute();
-    $result_verificar_notificacao = $stmt_verificar_notificacao->fetch(PDO::FETCH_ASSOC);
-    
-    if ($result_verificar_notificacao['count'] == 0) {
-        // A notificação não existe, então inseri-la
-        $sql_inserir_notificacao = "INSERT INTO notificacoes (user_id, descricao, data) VALUES (:user_id, :descricao, :data)";
-        $stmt_inserir_notificacao = $pdo->prepare($sql_inserir_notificacao);
-        $stmt_inserir_notificacao->bindParam(':user_id', $user_id, PDO::PARAM_INT);
-        $stmt_inserir_notificacao->bindParam(':descricao', $descricao, PDO::PARAM_STR);
-        $stmt_inserir_notificacao->bindParam(':data', $data, PDO::PARAM_STR);
-        $stmt_inserir_notificacao->execute();
-    }
+    $sql_inserir_notificacao = "INSERT INTO notificacoes (user_id, descricao, id_receita, data) VALUES (:user_id, :descricao, :id_receita, :data)";
+    $stmt_inserir_notificacao = $pdo->prepare($sql_inserir_notificacao);
+    $stmt_inserir_notificacao->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+    $stmt_inserir_notificacao->bindParam(':descricao', $descricao, PDO::PARAM_STR);
+    $stmt_inserir_notificacao->bindParam(':id_receita', $id_receita, PDO::PARAM_INT); // Usando PDO::PARAM_INT para o ID da receita
+    $stmt_inserir_notificacao->bindParam(':data', $data, PDO::PARAM_STR);
+    $stmt_inserir_notificacao->execute();
+  }
 }
 ?>
 
@@ -69,7 +71,6 @@ foreach ($receitas_a_receber as $receita) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>Receitas</title>
   <link rel="stylesheet" href="../styles/style-receita.css">
 </head>
@@ -80,8 +81,26 @@ foreach ($receitas_a_receber as $receita) {
       <ul class="rem">
         <li><a href="../despesa/despesa.php">Despesas</a></li>
         <li><a href="../categoria/categoria.php">Categorias</a></li>
-        <li><a href="notificacoes.php">Notificações<?php if ($total_notificacoes > 0) echo " ($total_notificacoes)"; ?></a></li>
-        <li><a href="../usuario/login.php">Voltar para a página de login</a></li>
+        <li><a href="notificacoesReceita.php">Notificações
+            <?php if ($total_notificacoes > 0)
+              echo " ($total_notificacoes)"; ?>
+          </a></li>
+        <li><a href="../pag-inicial.html">Voltar para a página de login</a></li>
+        <li>
+          <form action="pesquisarReceita.php" method="GET"> <!-- Alteração aqui -->
+            <!-- Adicione este trecho de código onde deseja colocar o menu suspenso na página receita.php -->
+            <label for="categoria">Pesquisar Receitas por Categoria:</label>
+            <select name="categoria" id="categoria" required>
+              <option value="">Selecione uma categoria</option>
+              <?php foreach ($dadosCat as $categoria): ?>
+                <option value="<?= $categoria['id'] ?>">
+                  <?= $categoria['descricao'] ?>
+                </option>
+              <?php endforeach; ?>
+            </select>
+            <button type="submit">Pesquisar</button>
+          </form>
+        </li>
       </ul>
     </nav>
   </header>

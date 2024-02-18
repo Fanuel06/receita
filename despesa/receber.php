@@ -11,19 +11,19 @@ $user_id = $_SESSION['id'];
 
 $user_name = $_SESSION['usuario'];
 
-$id_receita = $_GET["id_receita"];
+$id_despesa = $_GET["id_despesa"];
 
 // Capturar o id_notificacao para remover a notificação
 $id_notificacao = $_GET["id_notificacao"];
 
-// Verificar se o id_receita não está vazio
-if (!empty($id_receita)) {
-  // Atualiza o status da receita para "Recebido"
-  $sql_update_receita = "UPDATE receita SET status_pago = 'Recebido' WHERE id = :id_receita AND id_do_usuario = :user_id";
-  $stmt_update_receita = $pdo->prepare($sql_update_receita);
-  $stmt_update_receita->bindParam(':id_receita', $id_receita, PDO::PARAM_INT);
-  $stmt_update_receita->bindParam(':user_id', $user_id, PDO::PARAM_INT);
-  $stmt_update_receita->execute();
+// Verificar se o id_despesa não está vazio
+if (!empty($id_despesa)) {
+  // Atualiza o status da despesa para "Pago"
+  $sql_update_despesa = "UPDATE despesa SET status_pago = 'Pago' WHERE id = :id_despesa AND id_do_usuario = :user_id";
+  $stmt_update_despesa = $pdo->prepare($sql_update_despesa);
+  $stmt_update_despesa->bindParam(':id_despesa', $id_despesa, PDO::PARAM_INT);
+  $stmt_update_despesa->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+  $stmt_update_despesa->execute();
 }
 
 if (!empty($id_notificacao)) {
@@ -35,6 +35,6 @@ if (!empty($id_notificacao)) {
   $stmt_delete_notificacao->execute();
 }
 
-header("Location: notificacoesReceita.php");
+header("Location: notificacoes.php");
 exit;
 ?>

@@ -27,7 +27,7 @@ $dompdf = new Dompdf();
 // Construir o HTML do relatório
 $html = '<!DOCTYPE html>';
 $html .= '<html lang="pt-BR">';
-$html .= '<head><meta charset="UTF-8"><title>Relatório de Receitas</title>';
+$html .= '<head><meta charset="UTF-8"><title>Relatório de Despesas</title>';
 $html .= '<style>';
 $html .= 'body { font-family: Arial, sans-serif; }';
 $html .= 'h1 { text-align: center; margin-bottom: 20px; }';
