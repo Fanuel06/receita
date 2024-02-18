@@ -37,6 +37,8 @@ if (isset($_POST['usuario']) || isset($_POST['senha'])) {
 
     }
 ?>
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -44,32 +46,32 @@ if (isset($_POST['usuario']) || isset($_POST['senha'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>FinançaFacil - Login</title>
+    <link rel="stylesheet" href="./../styles/style-login.css">
 </head>
-
 <body>
-    <h1>Acesse sua conta</h1>
 
-    <form action="" method="POST">
-        <p>
-            <label>Usuario</label>
-            <input type="text" name="usuario" required>
-        </p>
-        <p>
-            <label>Senha</label>
-            <input id="senhaInput" type="password" name="senha" required>
-            <span id="togglePassword" class="password-toggle" onclick="togglePasswordVisibility()">
-                <img src="lock_icon.png" alt="Mostrar Senha">
-            </span>
-        </p>
-        <p>
-            <button type="submit">Entrar</button>
-        </p>
-        <p><a href="./EsqueceuSenha/esqueceuSenha.html">Esqueci minha senha</a></p>
-
-        <h1>Não tem uma conta ?</h1>
-        <a href="criarusuario.php">Criar conta</a>
-    </form>
+    <div class="login">
+        <h2>FinançaFacil - Login</h2>
+        <form action="" method="POST">
+            <div class="inputBx">
+                <input type="text" name="usuario" placeholder="Usuario">
+            </div>
+            
+            <div class="inputBx">
+                <input type="password" name="senha" placeholder="Senha">
+            </div>
+            
+            <div class="inputBx">
+                <button type="submit">Entrar</button>
+            </div>
+            
+            <div class="links">
+                <a class="criar-conta" href="criarusuario.php">Criar conta</a>
+                <a class="esqueceu-senha" href="./EsqueceuSenha/esqueceuSenha.html">Esqueceu sua senha?</a>
+            </div>
+        </form>
+    </div>
 
     <script>
         function togglePasswordVisibility() {
