@@ -3,32 +3,26 @@ require "../config.php";
 session_start();
 
 if (!isset($_SESSION['id'])) {
-    header("Location: ../usuario/login.php");
-    exit;
+  header("Location: ../usuario/login.php");
+  exit;
 }
 
 $user_id = $_SESSION['id'];
 
 $user_name = $_SESSION['usuario'];
 
-$table_name = "receitas_{$user_id}_{$user_name}";
-
 $id = $_GET['id'];
 
-$sql = "SELECT * FROM {$table_name} WHERE id = :id";
-$sql = $pdo->prepare($sql);
-$sql->bindValue(":id", $id);
-$sql->execute();
-$item = $sql->fetch(PDO::FETCH_ASSOC);
+$sql = "SELECT * FROM receita WHERE id = :id_receita AND id_do_usuario = :user_id";
+$stmt = $pdo->prepare($sql);
+$stmt->bindValue(":id_receita", $id); // Corrigido para :id_receita
+$stmt->bindValue(":user_id", $user_id);
+$stmt->execute();
+$item = $stmt->fetch(PDO::FETCH_ASSOC);
 
-$sql_receita = "SELECT * FROM {$table_name}";
-$stmt_receita = $pdo->prepare($sql_receita);
-$stmt_receita->execute();
-$dados = $stmt_receita->fetchAll(PDO::FETCH_ASSOC);
-
-
-$sql_categoria = "SELECT * FROM categoria_{$user_id}_{$user_name}";
+$sql_categoria = "SELECT * FROM categoria WHERE id_do_usuario = :user_id OR descricao IN ('Salário', 'Bônus')";
 $stmt_categoria = $pdo->prepare($sql_categoria);
+$stmt_categoria->bindParam(':user_id', $user_id);
 $stmt_categoria->execute();
 $dadosCat = $stmt_categoria->fetchAll(PDO::FETCH_ASSOC);
 ?>
@@ -77,12 +71,22 @@ $dadosCat = $stmt_categoria->fetchAll(PDO::FETCH_ASSOC);
             <option value=""></option>
             <?php foreach ($dadosCat as $categoria): ?>
               <option value="<?= $categoria['id'] ?>">
-                <?= $categoria['nome'] ?>
+                <?= $categoria['descricao'] ?>
               </option>
             <?php endforeach; ?>
           </select>
         </label>
-
+        <label>
+          Status
+          <select name="status" required>
+            <option value="Recebido">
+              Recebido
+            </option>
+            <option value="A-receber">
+              A receber
+            </option>
+          </select>
+        </label>
         <label>
           Data
           <input type="date" name="data_mvto" value="<?= $item['data_mvto'] ?>" required>

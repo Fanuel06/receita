@@ -11,15 +11,18 @@ $user_id = $_SESSION['id'];
 $user_name = $_SESSION['usuario'];
 
 $id = $_POST['id'];
-$nome = $_POST['nome'];
+$descricao = $_POST['descricao'];
 
-$table_name = "categoria_{$user_id}_{$user_name}";
+if ($id == 1 || $id == 2) {
+    echo "Não é possível editar essa categoria.";
+    exit;
+}
 
-$sql = "UPDATE {$table_name} SET nome = :nome WHERE id = :id";
+$sql = "UPDATE categoria SET descricao = :descricao WHERE id = :id_categoria";
 
 $stmt = $pdo->prepare($sql);
-$stmt->bindValue(":nome", $nome);
-$stmt->bindValue(":id", $id);
+$stmt->bindValue(":descricao", $descricao);
+$stmt->bindValue(":id_categoria", $id);
 
 if ($stmt->execute()) {
     header("Location: categoria.php");

@@ -9,11 +9,6 @@ $stmt->execute();
 
 if (isset($_POST['usuario']) || isset($_POST['senha'])) {
 
-    if (strlen($_POST['usuario']) == 0) {
-        echo "Preencha seu e-mail";
-    } else if (strlen($_POST['senha']) == 0) {
-        echo "Preencha sua senha";
-    } else {
         $usuario = $_POST['usuario'];
         $senha = $_POST['senha'];
 
@@ -41,7 +36,6 @@ if (isset($_POST['usuario']) || isset($_POST['senha'])) {
         }
 
     }
-}
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -58,20 +52,39 @@ if (isset($_POST['usuario']) || isset($_POST['senha'])) {
 
     <form action="" method="POST">
         <p>
-            <label>E-mail</label>
-            <input type="text" name="usuario">
+            <label>Usuario</label>
+            <input type="text" name="usuario" required>
         </p>
         <p>
             <label>Senha</label>
-            <input type="password" name="senha">
+            <input id="senhaInput" type="password" name="senha" required>
+            <span id="togglePassword" class="password-toggle" onclick="togglePasswordVisibility()">
+                <img src="lock_icon.png" alt="Mostrar Senha">
+            </span>
         </p>
         <p>
             <button type="submit">Entrar</button>
         </p>
+        <p><a href="./EsqueceuSenha/esqueceuSenha.html">Esqueci minha senha</a></p>
 
         <h1>Não tem uma conta ?</h1>
         <a href="criarusuario.php">Criar conta</a>
     </form>
+
+    <script>
+        function togglePasswordVisibility() {
+            var senhaInput = document.getElementById("senhaInput");
+            var toggleIcon = document.getElementById("togglePassword").getElementsByTagName("img")[0];
+
+            if (senhaInput.type === "password") {
+                senhaInput.type = "text";
+                toggleIcon.src = "unlock_icon.png";
+            } else {
+                senhaInput.type = "password";
+                toggleIcon.src = "lock_icon.png";
+            }
+        }
+    </script>
 </body>
 
 </html>

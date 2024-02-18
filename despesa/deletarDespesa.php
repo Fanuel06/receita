@@ -11,15 +11,14 @@ $user_id = $_SESSION['id'];
 
 $user_name = $_SESSION['usuario'];
 
-$table_name = "despesas_{$user_id}_{$user_name}";
-
 $id = $_GET["id"];
 
-$sql = "DELETE FROM {$table_name} WHERE id = :id";
-$sql = $pdo->prepare($sql);
+$sql = "DELETE FROM despesa WHERE id = :id_receita AND id_do_usuario = :user_id";
+$stmt = $pdo->prepare($sql);
 
-$sql->bindValue(":id", $id);
-$sql->execute();
+$stmt->bindValue(":id_receita", $id);
+$stmt->bindValue(":user_id", $user_id);
+$stmt->execute();
 
 header("Location: despesa.php");
 exit;

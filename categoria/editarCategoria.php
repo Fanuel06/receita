@@ -6,20 +6,18 @@ if (!isset($_SESSION['id'])) {
     header("Location: ../usuario/login.php");
     exit;
 }
-
 $user_id = $_SESSION['id'];
-
 $user_name = $_SESSION['usuario'];
 
 $id = $_GET['id'];
 
-$sql_categoria = "SELECT * FROM categoria_{$user_id}_{$user_name} WHERE id = :id";
+$sql_categoria = "SELECT * FROM categoria WHERE id = :id_categoria";
 $stmt_categoria = $pdo->prepare($sql_categoria);
-$stmt_categoria->bindParam(':id', $id);
+$stmt_categoria->bindParam(':id_categoria', $id);
 $stmt_categoria->execute();
 $categoria = $stmt_categoria->fetch(PDO::FETCH_ASSOC);
-
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -47,7 +45,7 @@ $categoria = $stmt_categoria->fetch(PDO::FETCH_ASSOC);
                 <input type="hidden" name="id" value="<?= $categoria['id'] ?>">
                 <label>
                     Categoria
-                    <input type="text" name="nome" value="<?= $categoria['nome'] ?>" required>
+                    <input type="text" name="descricao" value="<?= $categoria['descricao'] ?>" required>
                 </label>
                 <button type="submit">Editar</button>
             </form>

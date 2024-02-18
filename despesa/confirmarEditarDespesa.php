@@ -1,6 +1,5 @@
 <?php
 require "../config.php";
-
 session_start();
 
 if (!isset($_SESSION['id'])) {
@@ -12,30 +11,34 @@ $user_id = $_SESSION['id'];
 
 $user_name = $_SESSION['usuario'];
 
-$table_name = "despesas_{$user_id}_{$user_name}";
-
 $id = $_GET['id'];
 $descricao = $_GET['descricao'];
 $valor = $_GET['valor'];
 $data_mvto = $_GET['data_mvto'];
-$categoria_id = $_GET['categoria'];
+$categoria = $_GET['categoria'];
 
-$sql = "UPDATE {$table_name} SET
-  descricao = :descricao,
-  valor = :valor,
-  data_mvto = :data_mvto,
-  categoria_id = :categoria_id
-WHERE id = :id";
+$sql = "SELECT * FROM despesa WHERE id = :id_receita AND id_do_usuario = :user_id";
+$stmt = $pdo->prepare($sql);
+$stmt->bindValue(":id_despesa", $id);
+$stmt->bindValue(":user_id", $user_id);
+$stmt->execute();
+$item = $stmt->fetch(PDO::FETCH_ASSOC);
 
-$sql = $pdo->prepare($sql);
-$sql->bindValue(":descricao", $descricao);
-$sql->bindValue(":valor", $valor);
-$sql->bindValue(":data_mvto", $data_mvto);
-$sql->bindValue(":categoria_id", $categoria_id);
-$sql->bindValue(":id", $id);
+if (!$item) {
+    echo "Você não tem permissão para editar esta receita.";
+    exit;
+}
 
-$sql->execute();
+$sql_update = "UPDATE despesa SET descricao = :descricao, valor = :valor, data_mvto = :data_mvto, categoria_id = :categoria WHERE id = :id_receita AND id_do_usuario = :user_id";
+$stmt_update = $pdo->prepare($sql_update);
+$stmt_update->bindValue(":descricao", $descricao);
+$stmt_update->bindValue(":valor", $valor);
+$stmt_update->bindValue(":data_mvto", $data_mvto);
+$stmt_update->bindValue(":categoria", $categoria);
+$stmt_update->bindValue(":id_receita", $id);
+$stmt_update->bindValue(":user_id", $user_id);
+$stmt_update->execute();
 
 header("Location: despesa.php");
 exit;
-
+?>

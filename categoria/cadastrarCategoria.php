@@ -9,15 +9,14 @@ if (!isset($_SESSION['id'])) {
 
 $user_id = $_SESSION['id'];
 $user_name = $_SESSION['usuario'];
-$table_name = "categoria_{$user_id}_{$user_name}";
 
-$nome= $_GET["nome"];
+$descricao = $_GET["descricao"];
 
-$sql = "INSERT INTO $table_name (nome) VALUES
-        (:nome)";
+$sql = "INSERT INTO categoria (descricao, id_do_usuario) VALUES (:descricao, :user_id)";
 
 $stmt = $pdo->prepare($sql);
-$stmt->bindValue(":nome", $nome);
+$stmt->bindValue(":descricao", $descricao);
+$stmt->bindValue(":user_id", $user_id);
 $stmt->execute();
 
 header("Location: categoria.php");

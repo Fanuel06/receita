@@ -3,24 +3,24 @@ require "../config.php";
 session_start();
 
 if (!isset($_SESSION['id'])) {
-    header("Location: ../usuario/login.php");
-    exit;
+  header("Location: ../usuario/login.php");
+  exit;
 }
 
 $user_id = $_SESSION['id'];
 
 $user_name = $_SESSION['usuario'];
 
-$table_name = "despesas_{$user_id}_{$user_name}";
-
-$sql_receita = "SELECT * FROM {$table_name}";
+$sql_receita = "SELECT * FROM despesa WHERE id_do_usuario = :user_id";
 $stmt_receita = $pdo->prepare($sql_receita);
+$stmt_receita->bindParam(':user_id', $user_id, PDO::PARAM_INT);
 $stmt_receita->execute();
 $dados = $stmt_receita->fetchAll(PDO::FETCH_ASSOC);
 
 
-$sql_categoria = "SELECT * FROM categoria_{$user_id}_{$user_name}";
+$sql_categoria = "SELECT * FROM categoria WHERE id_do_usuario = :user_id OR descricao IN ('Salário', 'Bônus')";
 $stmt_categoria = $pdo->prepare($sql_categoria);
+$stmt_categoria->bindParam(':user_id', $user_id, PDO::PARAM_INT);
 $stmt_categoria->execute();
 $dadosCat = $stmt_categoria->fetchAll(PDO::FETCH_ASSOC);
 ?>
@@ -32,7 +32,7 @@ $dadosCat = $stmt_categoria->fetchAll(PDO::FETCH_ASSOC);
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Despesas</title>
+  <title>Despesa</title>
   <link rel="stylesheet" href="../styles/style-receita.css">
 </head>
 
@@ -40,12 +40,11 @@ $dadosCat = $stmt_categoria->fetchAll(PDO::FETCH_ASSOC);
   <header>
     <nav>
       <ul class="rem">
-        <li><a href="..//receita/receita.php">Receitas</a></li>
-        <li><a href="..//categoria/categoria.php">Categorias</a></li>
+        <li><a href="../receitas/receita.php">Receitas</a></li>
+        <li><a href="../categoria/categoria.php">Categorias</a></li>
       </ul>
     </nav>
   </header>
-
   <main>
     <section class="formulario">
       <form action="./cadastrarDespesa.php" method="get">
@@ -57,21 +56,31 @@ $dadosCat = $stmt_categoria->fetchAll(PDO::FETCH_ASSOC);
 
         <label>
           Valor
-          <input type="number" name="valor" required>
+          <input type="text" name="valor" required pattern="^[1-9]\d*(\.\d+)?$"
+            title="Por favor, insira um número válido acima de 0 (ex: 10 ou 10.50 lembre de utilizar '.' ao invés de ','">
         </label>
 
         <label>
           Categoria
           <select name="categoria" required>
-            <option value=""></option>
             <?php foreach ($dadosCat as $categoria): ?>
               <option value="<?= $categoria['id'] ?>">
-                <?= $categoria['nome'] ?>
+                <?= $categoria['descricao'] ?>
               </option>
             <?php endforeach; ?>
           </select>
         </label>
-
+        <label>
+          Status
+          <select name="status" required>
+            <option value="Pago">
+              Pago
+            </option>
+            <option value="A-pagar">
+              A pagar
+            </option>
+          </select>
+        </label>
         <label>
           Data
           <input type="date" name="data_mvto" required>
@@ -90,8 +99,10 @@ $dadosCat = $stmt_categoria->fetchAll(PDO::FETCH_ASSOC);
             <th>Descrição</th>
             <th>Valor</th>
             <th>Categoria</th>
+            <th>Status</th>
             <th>Data</th>
             <th>Opções</th>
+            <th><a target="_blank" href="emitirPDF.php">Emitir Relatório</a></th>
           </tr>
         </thead>
         <tbody>
@@ -112,12 +123,15 @@ $dadosCat = $stmt_categoria->fetchAll(PDO::FETCH_ASSOC);
                 $categoriaEncontrada = '';
                 foreach ($dadosCat as $categoria) {
                   if ($categoria['id'] == $dado['categoria_id']) {
-                    $categoriaEncontrada = $categoria['nome'];
+                    $categoriaEncontrada = $categoria['descricao'];
                     break;
                   }
                 }
                 echo $categoriaEncontrada;
                 ?>
+              </td>
+              <td>
+                <?= $dado['status_pago'] ?>
               </td>
               <td>
                 <?= $dado['data_mvto'] ?>

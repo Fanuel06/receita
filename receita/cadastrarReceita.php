@@ -9,21 +9,23 @@ if (!isset($_SESSION['id'])) {
 
 $user_id = $_SESSION['id'];
 $user_name = $_SESSION['usuario'];
-$table_name = "receitas_{$user_id}_{$user_name}";
 
 $descricao = $_GET["descricao"];
 $valor = $_GET["valor"];
 $data_mvto = $_GET["data_mvto"];
 $categoria = $_GET["categoria"];
+$status = $_GET["status"];
 
-$sql = "INSERT INTO $table_name (descricao, valor, data_mvto, categoria_id) VALUES
-        (:descricao, :valor, :data_mvto, :categoria_id)";
+$sql = "INSERT INTO receita (descricao, valor, status_pago, data_mvto, categoria_id, id_do_usuario)
+                VALUES (:descricao, :valor, :status_pago, :data_mvto, :categoria_id, :id_do_usuario)";
 
 $stmt = $pdo->prepare($sql);
 $stmt->bindValue(":descricao", $descricao);
 $stmt->bindValue(":valor", $valor);
+$stmt->bindValue(":status_pago", $status);
 $stmt->bindValue(":data_mvto", $data_mvto);
 $stmt->bindValue(":categoria_id", $categoria);
+$stmt->bindValue(":id_do_usuario", $user_id);
 $stmt->execute();
 
 header("Location: receita.php");
