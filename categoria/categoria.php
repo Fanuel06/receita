@@ -18,6 +18,9 @@ $stmt_categoria->execute();
 $dadosCat = $stmt_categoria->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
+<!DOCTYPE html>
+<html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -32,10 +35,10 @@ $dadosCat = $stmt_categoria->fetchAll(PDO::FETCH_ASSOC);
     <img src="./../imagens/logo-finanç-branco.png" alt="">
     <div class="paginas">
     <ul>
-        <li><a href="/finn/receita/receita.php">Receitas</a></li>
-        <li><a href="despesa/despesa.php">Despesas</a></li>
-        <li><a href="categoria.php">Categorias</a></li>
-        <li><a href="/finn/controle-financeiro/graficos.php">Controle Finaceiro</a></li>    
+        <li><a href="./../receita/receita.php">Receitas</a></li>
+        <li><a href="./../despesa/despesa.php">Despesas</a></li>
+        <li><a href="./../categoria/categoria.php">Categorias</a></li>
+        <li><a href="./../controle-financeiro/graficos.php">Controle Finaceiro</a></li>    
     </ul>
   </div>
   </header>

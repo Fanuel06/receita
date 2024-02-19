@@ -31,17 +31,17 @@ $categoria = $stmt_categoria->fetch(PDO::FETCH_ASSOC);
 </head>
 
 <body>
-    <header>
-        <img src="./../Imagens/logo-finanç-branco.png" alt="">
-        <div class="paginas">
-            <ul>
-                <li><a href="/finn/receita/receita.php">Receitas</a></li>
-                <li><a href="/finn/despesa/despesa.php">Despesas</a></li>
-                <li><a href="/finn/categoria/categoria.php">Categorias</a></li>
-                <li><a href="graficos.php">Controle Finaceiro</a></li>    
-            </ul>
-        </div>
-    </header>
+<header>
+    <img src="./../imagens/logo-finanç-branco.png" alt="">
+    <div class="paginas">
+        <ul>
+            <li><a href="./../receita/receita.php">Receitas</a></li>
+            <li><a href="./../despesa/despesa.php">Despesas</a></li>
+            <li><a href="./../categoria/categoria.php">Categorias</a></li>
+            <li><a href="#">Controle Finaceiro</a></li>    
+        </ul>
+    </div>
+  </header>
 
     <main>
         <section class="formulario">
@@ -49,9 +49,9 @@ $categoria = $stmt_categoria->fetch(PDO::FETCH_ASSOC);
                 <input type="hidden" name="id" value="<?= $categoria['id'] ?>">
                 <label>
                     <p class="paragrafo">Categoria</p>
-                    <input type="text" name="descricao" value="<?= $categoria['descricao'] ?>" required>
+                    <input class="input" type="text" name="descricao" value="<?= $categoria['descricao'] ?>" required>
                 </label>
-                <button type="submit">Editar</button>
+                <button class="botao-categoria" type="submit">Editar</button>
             </form>
         </section>
     </main>
