@@ -1,8 +1,9 @@
 usuario
     login                      ok
-    criar usuario              ok
+    criar usuario 
+        enviar email           ok
     esqueceu senha
-        enviar email
+        enviar email           
         esqueceu senha
         redefinir senha
     confiramar codigo
@@ -11,7 +12,7 @@ usuario
 
 pagina inicial
 
-    categoria
+    categoria                  ok
         editar categoria
 
     despesa
@@ -21,3 +22,9 @@ pagina inicial
         
     receita
         editar receita
+
+
+na branch versao-fanuel tem o front-end de:
+    categoria
+    login
+    criar usuario

@@ -32,7 +32,9 @@ if (isset($_POST['usuario']) || isset($_POST['senha'])) {
             header("Location: ../pag-inicial.html");
 
         } else {
-            echo "Usuário não encontrado, verifique seu usuario e senha";
+            echo "<script>alert('Usuário não encontrado, verifique seu usuário e senha');</script>";
+            header("Refresh:0; url=login.php");
+            exit();
         }
 
     }

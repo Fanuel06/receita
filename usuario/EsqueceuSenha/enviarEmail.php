@@ -49,48 +49,64 @@ if ($resultado) {
         ";
 
         $mail->send();
-        
+
         // Exibindo a mensagem de sucesso e o link para voltar à página de login
         ?>
         <!DOCTYPE html>
         <html lang="pt-br">
+
         <head>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link rel="stylesheet" href="../../styles/style-enviarEmailEsqueceuSenha.css">
             <title>Email Enviado com Sucesso</title>
         </head>
+
         <body>
-            <div>
-                <h1>Email Enviado com Sucesso</h1>
-                <p>Um e-mail com o link para redefinir a sua senha foi enviado para o seu endereço de e-mail.</p>
-                <a href="../login.php">Voltar para a página de Login</a>
-            </div>
-        </body>
+
+            <body>
+                <div class="container">
+                    <div id="div1">
+                        <h1>Email Enviado com Sucesso</h1>
+                        <p>Um e-mail com o link para redefinir a sua senha foi enviado para o seu endereço de e-mail.</p>
+                    </div>
+                    <div class="link-container">
+                        <a href="../login.php">Voltar para a página de Login</a>
+                    </div>
+                </div>
+
         </html>
         <?php
         exit;
     } catch (Exception $e) {
         echo "Erro ao enviar e-mail: {$mail->ErrorInfo}";
     }
-}
-else {
+} else {
     // Se não encontrar o e-mail ou o usuário no banco de dados, exibe uma mensagem
     ?>
     <!DOCTYPE html>
     <html lang="pt-br">
+
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../styles/style-enviarEmailEsqueceuSenha.css">
         <title>Email não encontrado</title>
     </head>
+
     <body>
-        <div>
-            <h1>Email ou Usuário não encontrado</h1>
-            <p>O email ou usuário fornecido não foi encontrado em nosso sistema.</p>
-            <p>Verifique o usuário e o email e tente novamente.</p>
-            <a href="esqueceuSenha.html">Voltar para a página de Esqueceu Senha</a>
+        <div class="container">
+            <div id="div1">
+                <h1>Email ou Usuário não encontrado</h1>
+                <p>O email ou usuário fornecido não foi encontrado em nosso sistema.</p>
+                <p>Verifique o usuário e o email e tente novamente.</p>
+            </div>
+            <div class="link-container">
+                <a href="esqueceuSenha.html">Voltar para a página de Esqueceu Senha</a>
+            </div>
         </div>
     </body>
+
     </html>
     <?php
     exit;

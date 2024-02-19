@@ -1,3 +1,4 @@
+
 header {
     display: flex;
     position: relative;
@@ -47,78 +48,27 @@ header img {
     background: rgb(7, 75, 200);
     transform: scale(1.1);
 }
-
 /* Fim do header e inicio do main*/
 
-main {
-    /* display: flex; */
-    /* border: #000 solid 1px; */
-    height: 70vh;    
-}
 
 .formulario {
-    color: #fff;
-    background:rgb(0, 80, 229);
+    height: 60vh;
+    margin: 50px 0 50px 25px;
+    border: #000 solid 2px;
+}
+.paragrafo {
     font-size: 40px;
-    font-family: Arial, Helvetica, sans-serif;
-    padding: 12px;
-    margin: 50px 12px 0 12px;
-    width: 96.8%;
-    border: #000 solid 3px;
 }
 
-.input-categoria {
-    height: 25px;
-    width: 18rem;
-}
 
-.botao-categoria {
-    padding: 5px;
-    border-radius: 5px;
-}
 
-.categoriaSalvas {
-    border: #000 solid 4px;
-    padding: 12px;
-    width: 96.8%;
-    margin: 28px 12px;
-    background: rgb(0, 80, 229);
-}
 
-.tabela {
-    font-size: 25px;
-    background: white;
-}
-
-.tabela th {
-    border: #000 solid 3px;
-    font-weight: 550;
-    font-size: 26px;
-}
-
-.tabela .conteudo-tabela {
-    border: #000 solid 2px;
-    padding: 10px;
-    width: 130vh;
-}
-
-.td-opcoes {
-    border: #000 solid 2px;
-    padding: 10px;
-    width: 65vh;
-    text-align: center;
-}
-
-.fa-solid {
-    margin: 0 50px;
-}
 
 /* css do footer*/
-
 footer {
     background: rgb(0, 80, 229);
-    position: relative;
     height: 10vh;
+    bottom: 0;
     width: 100%;
 }
 

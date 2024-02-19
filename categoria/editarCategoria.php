@@ -25,18 +25,22 @@ $categoria = $stmt_categoria->fetch(PDO::FETCH_ASSOC);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Categoria</title>
-    <link rel="stylesheet" href="./styles/style.css">
+    <link rel="stylesheet" href="./../styles/reset.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="./../styles/style-editar-categoria.css">
 </head>
 
 <body>
     <header>
-        <nav>
-            <ul class="rem">
-                <li><a href="../despesa/despesa.php">Despesas</a></li>
-                <li><a href="../receita/receita.php">Receitas</a></li>
-                <li><a href="../categoria/categoria.php">Categorias</a></li>
+        <img src="./../imagens/logo-finanç-branco.png" alt="">
+        <div class="paginas">
+            <ul>
+                <li><a href="/Proz/receita/receita.php">Receitas</a></li>
+                <li><a href="despesa/despesa.php">Despesas</a></li>
+                <li><a href="categoria/categoria.php">Categorias</a></li>
+                <li><a href="#">Controle Finaceiro</a></li>    
             </ul>
-        </nav>
+        </div>
     </header>
 
     <main>
@@ -44,13 +48,19 @@ $categoria = $stmt_categoria->fetch(PDO::FETCH_ASSOC);
             <form action="./confirmarEditarCategoria.php" method="post">
                 <input type="hidden" name="id" value="<?= $categoria['id'] ?>">
                 <label>
-                    Categoria
+                    <p class="paragrafo">Categoria</p>
                     <input type="text" name="descricao" value="<?= $categoria['descricao'] ?>" required>
                 </label>
                 <button type="submit">Editar</button>
             </form>
         </section>
     </main>
+
+    <footer>
+        <p class="copy"><i class="bi bi-c-circle">Todos os direitos reservados.</i></p>
+    </footer>
+
+
     <script src="https://kit.fontawesome.com/561265e797.js" crossorigin="anonymous"></script>
 </body>
 
