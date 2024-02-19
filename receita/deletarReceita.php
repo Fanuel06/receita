@@ -13,7 +13,6 @@ $user_name = $_SESSION['usuario'];
 
 $id = $_GET["id"];
 
-// Verificar se há uma notificação associada a esta receita
 $sql_verificar_notificacao = "SELECT id FROM notificacoes WHERE id_receita = :id_receita AND user_id = :user_id";
 $stmt_verificar_notificacao = $pdo->prepare($sql_verificar_notificacao);
 $stmt_verificar_notificacao->bindParam(':id_receita', $id, PDO::PARAM_INT);
@@ -21,14 +20,12 @@ $stmt_verificar_notificacao->bindParam(':user_id', $user_id, PDO::PARAM_INT);
 $stmt_verificar_notificacao->execute();
 $notificacao = $stmt_verificar_notificacao->fetch(PDO::FETCH_ASSOC);
 
-// Verificar se a notificação foi encontrada
 if ($notificacao) {
     echo "Notificação encontrada. ID da notificação: " . $notificacao['id'] . "<br>";
 } else {
     echo "Nenhuma notificação encontrada para esta receita.<br>";
 }
 
-// Excluir a notificação, se existir
 if ($notificacao) {
     $sql_delete_notificacao = "DELETE FROM notificacoes WHERE id = :id_notificacao";
     $stmt_delete_notificacao = $pdo->prepare($sql_delete_notificacao);
@@ -40,7 +37,6 @@ if ($notificacao) {
     echo "Nenhuma notificação para excluir.<br>";
 }
 
-// Excluir a receita
 $sql_delete_receita = "DELETE FROM receita WHERE id = :id_receita AND id_do_usuario = :user_id";
 $stmt_delete_receita = $pdo->prepare($sql_delete_receita);
 $stmt_delete_receita->bindParam(':id_receita', $id, PDO::PARAM_INT);

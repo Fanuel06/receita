@@ -38,7 +38,7 @@ $categoria = $stmt_categoria->fetch(PDO::FETCH_ASSOC);
             </ul>
         </nav>
     </header>
-
+    
     <main>
         <section class="formulario">
             <form action="./confirmarEditarCategoria.php" method="post">

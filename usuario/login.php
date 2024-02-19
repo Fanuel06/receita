@@ -9,33 +9,34 @@ $stmt->execute();
 
 if (isset($_POST['usuario']) || isset($_POST['senha'])) {
 
-        $usuario = $_POST['usuario'];
-        $senha = $_POST['senha'];
+    $usuario = $_POST['usuario'];
+    $senha = $_POST['senha'];
 
-        $sql_code = "SELECT * FROM login WHERE usuario = :usuario AND senha = :senha";
-        $stmt = $pdo->prepare($sql_code);
-        $stmt->execute([
-            ':usuario' => $usuario,
-            ':senha' => $senha
-        ]);
+    $sql_code = "SELECT * FROM login WHERE usuario = :usuario AND senha = :senha";
+    $stmt = $pdo->prepare($sql_code);
+    $stmt->execute([
+        ':usuario' => $usuario,
+        ':senha' => $senha
+    ]);
 
-        $quantidade = $stmt->rowCount();
+    $quantidade = $stmt->rowCount();
 
-        if ($quantidade == 1) {
+    if ($quantidade == 1) {
 
-            $usuario = $stmt->fetch();
+        $usuario = $stmt->fetch();
 
-            $_SESSION['id'] = $usuario['id'];
-            $_SESSION['nome'] = $usuario['nome'];
-            $_SESSION['usuario'] = $usuario['usuario'];
+        $_SESSION['id'] = $usuario['id'];
+        $_SESSION['nome'] = $usuario['nome'];
+        $_SESSION['usuario'] = $usuario['usuario'];
 
-            header("Location: ../pag-inicial.html");
+        header("Location: ../pag-inicial.html");
 
-        } else {
-            echo "Usuário não encontrado, verifique seu usuario e senha";
-        }
-
+    } else {
+        echo "<script>alert('Usuário não encontrado, verifique seu usuário e senha');</script>";
+        header("Refresh:0; url=login.php");
+        exit();
     }
+}
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">

@@ -29,7 +29,6 @@ $stmt_categoria->bindParam(':user_id', $user_id, PDO::PARAM_INT);
 $stmt_categoria->execute();
 $dadosCat = $stmt_categoria->fetchAll(PDO::FETCH_ASSOC);
 
-// Verificar se há despesas a pagar cuja data foi atingida
 $sql_despesas_a_pagar = "SELECT * FROM despesa WHERE id_do_usuario = :user_id AND status_pago = 'A-pagar' AND data_mvto <= CURDATE()";
 $stmt_despesas_a_pagar = $pdo->prepare($sql_despesas_a_pagar);
 $stmt_despesas_a_pagar->bindParam(':user_id', $user_id, PDO::PARAM_INT);
@@ -71,7 +70,7 @@ foreach ($despesas_a_pagar as $despesa) {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Despesas</title>
-  <link rel="stylesheet" href="../styles/style-receita.css">
+  <link rel="stylesheet" href="../styles/style-despesa.css">
 </head>
 
 <body>
@@ -135,7 +134,7 @@ foreach ($despesas_a_pagar as $despesa) {
     </section>
 
     <section class="tabela">
-      <table>
+    <table style="background-color: #6495ED;">
         <thead>
           <tr>
             <th>Número</th>

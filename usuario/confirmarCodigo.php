@@ -9,18 +9,26 @@ if (isset($_POST['codigo_verificacao']) && isset($_SESSION['codigo_verificacao']
         ?>
         <!DOCTYPE html>
         <html lang="pt-br">
+
         <head>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link rel="stylesheet" href="../styles/style-confirmarCodigo.css">
             <title>Código Verificado</title>
         </head>
+
         <body>
-            <div>
-                <h1>Código Verificado com Sucesso</h1>
-                <p>O seu código foi verificado com sucesso. Você pode prosseguir para a página de login.</p>
-                <a href="login.php">Ir para a página de Login</a>
+            <div class="container">
+                <div id="div1">
+                    <h1>Código Verificado com Sucesso</h1>
+                    <p>O seu código foi verificado com sucesso. Você pode prosseguir para a página de login.</p>
+                </div>
+                <div class="link-container">
+                    <a href="login.php">Ir para a página de Login</a>
+                </div>
             </div>
         </body>
+
         </html>
         <?php
         exit;

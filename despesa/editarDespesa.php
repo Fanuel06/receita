@@ -13,7 +13,7 @@ $user_name = $_SESSION['usuario'];
 
 $id = $_GET['id'];
 
-$sql = "SELECT * FROM despesa WHERE id = :id_receita AND id_do_usuario = :user_id";
+$sql = "SELECT * FROM despesa WHERE id = :id_despesa AND id_do_usuario = :user_id";
 $stmt = $pdo->prepare($sql);
 $stmt->bindValue(":id_despesa", $id); // Corrigido para :id_receita
 $stmt->bindValue(":user_id", $user_id);

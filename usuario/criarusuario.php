@@ -8,7 +8,7 @@
 </head>
 <body>
     <h1>Crie sua conta</h1>
-    <form id="signupForm" action="cadastrarUsuario.php" method="post">
+    <form id="signupForm" action="cadastrarUsuario.php" method="post" onsubmit="return confirmEmail()">
         <p>
             <label>Nome</label>
             <input required type="text" name="nome">
@@ -30,17 +30,11 @@
         </p>
     </form>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            document.getElementById('signupForm').addEventListener('submit', function(event) {
-                var emailInput = document.getElementById('email').value;
-
-                var confirmation = confirm('O email "' + emailInput + '" está correto?');
-
-                if (!confirmation) {
-                    event.preventDefault();\
-                }
-            });
-        });
+        function confirmEmail() {
+            var emailInput = document.getElementById('email').value;
+            var confirmation = confirm('O email "' + emailInput + '" está correto?');
+            return confirmation;
+        }
     </script>
 </body>
 </html>

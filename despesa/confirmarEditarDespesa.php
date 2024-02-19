@@ -17,7 +17,7 @@ $valor = $_GET['valor'];
 $data_mvto = $_GET['data_mvto'];
 $categoria = $_GET['categoria'];
 
-$sql = "SELECT * FROM despesa WHERE id = :id_receita AND id_do_usuario = :user_id";
+$sql = "SELECT * FROM despesa WHERE id = :id_despesa AND id_do_usuario = :user_id";
 $stmt = $pdo->prepare($sql);
 $stmt->bindValue(":id_despesa", $id);
 $stmt->bindValue(":user_id", $user_id);
