@@ -4,25 +4,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Esqueceu Senha</title>
 </head>
 
 <body>
-    <h1>Digite seu Usuario e seu Email para recuperar sua senha.</h1>
-    <form action="enviarEmail.php" method="post">
-        <p>
-            <label>Usuário</label>
-            <input required type="text" name="usuario">
-        </p>
-        <p>
-            <label>Email</label>
-            <input required type="email" id="email" name="email">
-        </p>
-        <p>
-            <button type="submit">Enviar Email</button>
-        </p>
-    </form>
-    <a href="../login.php">Voltar para a página de login</a>
+    
+    <div class="container">
+        <div class="box">
+            <h1>Digite seu Usuario e seu Email para recuperar sua senha.</h1>
+            <form action="enviarEmail.php" method="post">
+                <p>
+                    <label class="label-usuario">Usuário</label>
+                    <input required type="text" name="usuario">
+                </p>
+                <p>
+                    <label class="label-email">Email</label>
+                    <input required type="email" id="email" name="email">
+                </p>
+                <p>
+                    <button type="submit">Enviar Email</button>
+                </p>
+            </div>
+        </form>
+        <a href="../login.php">Voltar para a página de login</a>
+    </div>
 </body>
 
 </html>

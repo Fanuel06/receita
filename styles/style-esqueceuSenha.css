@@ -1,0 +1,73 @@
+body {
+    border: none;
+    margin: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(to left, rgb(49, 92, 250), rgb(29, 127, 255), rgba(40, 182, 243, 0.967));
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.box { 
+    border: 2px solid black;
+    padding: 7rem 2rem;
+    border-radius: 20px;
+    background: linear-gradient(to right, rgb(8, 0, 243), rgb(9, 100, 219), rgba(109, 22, 201, 0.967));
+    box-shadow: 5px 5px 10px 0 #000;
+    color: #fff;
+    margin-bottom: 20px; /* Espaçamento entre a div e o link */
+}
+
+h1 {
+    text-align: center;
+}
+
+form {
+    margin: 0 auto;
+    text-align: center;
+    width: 300px;
+    background-color: #243dff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: rgb(29, 108, 255);
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: rgb(7, 75, 200);
+}
+
+.label-usuario {
+    margin: 0 15px 5px 0;
+    font-size: 28px;
+}
+
+.label-email {
+    margin: 5px 40px 10px 0px;
+    font-size: 28px;
+}
+
+
+a {
+    color: #fff;
+    text-decoration: none;
+}

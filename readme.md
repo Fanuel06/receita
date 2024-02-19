@@ -1,32 +1,28 @@
+pagina inicial
+
 usuario
     login                      ok
     criar usuario              ok
     enviar email               ok
-    esqueceu senha
+    esqueceu senha             ok
     enviar email               ok
     redefinir senha            ok
     confiramar codigo          ok
     confirmar codigo pag       ok
     get email                  ok
 
-pagina inicial
-
-    categoria                  ok
+    CATEGORIA                  ok
         editar categoria       ok
 
-    despesa
+    DESPESA
+        despesa
         editar despesa
         notificação despesa
 
         
-    receita
+    RECEITA
         receita
         editar receita
         notificação receita
         pesquisar receita
 
-
-na branch versao-fanuel tem o front-end de:
-    categoria
-    login
-    criar usuario
