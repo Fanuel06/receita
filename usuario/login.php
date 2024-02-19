@@ -47,6 +47,7 @@ if (isset($_POST['usuario']) || isset($_POST['senha'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FinançaFacil - Login</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="./../styles/style-login.css">
 </head>
 <body>
@@ -59,7 +60,7 @@ if (isset($_POST['usuario']) || isset($_POST['senha'])) {
             </div>
             
             <div class="inputBx">
-                <input type="password" name="senha" placeholder="Senha">
+                <input id="senhaInput" type="password" name="senha" placeholder="Senha">
             </div>
             
             <div class="inputBx">
@@ -73,20 +74,6 @@ if (isset($_POST['usuario']) || isset($_POST['senha'])) {
         </form>
     </div>
 
-    <script>
-        function togglePasswordVisibility() {
-            var senhaInput = document.getElementById("senhaInput");
-            var toggleIcon = document.getElementById("togglePassword").getElementsByTagName("img")[0];
-
-            if (senhaInput.type === "password") {
-                senhaInput.type = "text";
-                toggleIcon.src = "unlock_icon.png";
-            } else {
-                senhaInput.type = "password";
-                toggleIcon.src = "lock_icon.png";
-            }
-        }
-    </script>
 </body>
 
 </html>

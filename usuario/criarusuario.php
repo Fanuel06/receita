@@ -10,7 +10,7 @@
 <body>
     <div class="login">
         <h2>FinançaFacil - Crie sua conta</h2>
-        <form action="./cadastrarusuario.php" method="get">
+        <form id="signupForm" action="./cadastrarusuario.php" method="post">
 
             <div class="inputBx">
                 <input type="text" name="nome" placeholder="Nome" required>
@@ -29,7 +29,7 @@
             </div>
 
             <div class="inputBx">
-                <button type="submit">Cadastrar</button>
+                <button id="submitBtn" type="submit">Cadastrar</button>
             </div>
             
         </form>

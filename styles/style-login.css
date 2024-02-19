@@ -26,9 +26,7 @@ body {
 
 .login:hover {
     transform: scale(1.05);
-
 }
-/* background: linear-gradient(to right, rgba(109, 22, 201, 0.967), rgb(9, 100, 219),  rgb(8, 0, 243)); */
 
 .login h2 {
     font-size: 2em;
@@ -56,6 +54,7 @@ body {
     outline: none;
     font-weight: 500;
 }
+
 
 .login .inputBx button[type="submit"] {
     margin-left: 40px;
