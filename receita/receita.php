@@ -72,39 +72,43 @@ foreach ($receitas_a_receber as $receita) {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Receitas</title>
-  <link rel="stylesheet" href="../styles/style-receita.css">
+  <link rel="stylesheet" href="./../styles/reset.css">
+  <link rel="stylesheet" href="./../styles/style-receita.css">
 </head>
 
 <body>
+
+  
   <header>
-    <nav>
-      <ul class="rem">
-        <li><a href="../despesa/despesa.php">Despesas</a></li>
-        <li><a href="../categoria/categoria.php">Categorias</a></li>
-        <li><a href="notificacoesReceita.php">Notificações
-            <?php if ($total_notificacoes > 0)
+    <img src="./../imagens/logo-finanç-branco.png" alt="">
+    <div class="paginas">
+      <ul>
+        <li><a href="./../receita/receita.php">Receitas</a></li>
+        <li><a href="./../despesa/despesa.php">Despesas</a></li>
+        <li><a href="./../categoria/categoria.php">Categorias</a></li>
+        <li><a href="#">Controle Finaceiro</a></li>    
+        <li><a href="notificacoesDespesa.php">Notificações
+          <?php if ($total_notificacoes > 0)
               echo " ($total_notificacoes)"; ?>
           </a></li>
-        <li><a href="../pag-inicial.html">Voltar para a página de login</a></li>
-        <li>
-          <form action="pesquisarReceita.php" method="GET"> <!-- Alteração aqui -->
-            <!-- Adicione este trecho de código onde deseja colocar o menu suspenso na página receita.php -->
-            <label for="categoria">Pesquisar Receitas por Categoria:</label>
-            <select name="categoria" id="categoria" required>
-              <option value="">Selecione uma categoria</option>
-              <?php foreach ($dadosCat as $categoria): ?>
-                <option value="<?= $categoria['id'] ?>">
-                  <?= $categoria['descricao'] ?>
-                </option>
-              <?php endforeach; ?>
-            </select>
-            <button type="submit">Pesquisar</button>
-          </form>
-        </li>
-      </ul>
-    </nav>
-  </header>
-  <main>
+          <li><a href="../pag-inicial.html">Voltar para a página inicial</a></li>
+        </ul>
+      </div>
+    </header>
+    <main>
+    <form class="pesquisar-receita" action="pesquisarReceita.php" method="GET">
+      <label for="categoria">Pesquisar Receitas por Categoria:</label>
+      <select name="categoria" id="categoria" required>
+        <option value="">Selecione uma categoria</option>
+        <?php foreach ($dadosCat as $categoria): ?>
+          <option value="<?= $categoria['id'] ?>">
+            <?= $categoria['descricao'] ?>
+          </option>
+        <?php endforeach; ?>
+      </select>
+      <button type="submit">Pesquisar</button>
+    </form>
+
     <section class="formulario">
       <form action="./cadastrarReceita.php" method="get">
 
@@ -195,7 +199,7 @@ foreach ($receitas_a_receber as $receita) {
               <td>
                 <?= $dado['data_mvto'] ?>
               </td>
-              <td>
+              <td class="td-opcoes">
                 <a href="deletarReceita.php?id=<?= $dado['id'] ?>"><i class="fa-solid fa-trash"></i></a>
                 <a href="editarReceita.php?id=<?= $dado['id'] ?>"><i class="fa-solid fa-pen-to-square"></i></a>
               </td>
@@ -205,6 +209,11 @@ foreach ($receitas_a_receber as $receita) {
       </table>
     </section>
   </main>
+
+  <footer>
+    <p class="copy"><i class="bi bi-c-circle">Todos os direitos reservados.</i></p>
+  </footer>
+
   <script src="https://kit.fontawesome.com/561265e797.js" crossorigin="anonymous"></script>
 </body>
 
