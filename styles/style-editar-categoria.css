@@ -50,19 +50,39 @@ header img {
 }
 /* Fim do header e inicio do main*/
 
+main {
+    height: 70vh;
+}
 
 .formulario {
-    height: 60vh;
-    margin: 50px 0 50px 25px;
-    border: #000 solid 2px;
+    display: flex;
+    color: #fff;
+    background: rgb(0, 80, 229);
+    font-size: 40px;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 12px;
+    margin: 50px 12px 0 12px;
+    width: 96.8%;
+    border: #000 solid 3px;
 }
+
 .paragrafo {
     font-size: 40px;
 }
 
+.input {
+    font-size: 22px;
+    height: 2rem;
+}
 
-
-
+.botao-categoria {
+    padding: 8px;
+    border-radius: 8px;
+    font-size: 20px;
+    font-weight: 600;
+    background: rgb(136, 0, 255);
+    color: white;
+}
 
 /* css do footer*/
 footer {

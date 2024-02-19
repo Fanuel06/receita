@@ -1,19 +1,18 @@
 usuario
     login                      ok
-    criar usuario 
-        enviar email           ok
+    criar usuario              ok
+    enviar email               ok
     esqueceu senha
-        enviar email           
-        esqueceu senha
-        redefinir senha
-    confiramar codigo
-    confirmar codigo pag
-    get email
+    enviar email               ok
+    redefinir senha            ok
+    confiramar codigo          ok
+    confirmar codigo pag       ok
+    get email                  ok
 
 pagina inicial
 
     categoria                  ok
-        editar categoria
+        editar categoria       ok
 
     despesa
         editar despesa
@@ -21,7 +20,10 @@ pagina inicial
 
         
     receita
+        receita
         editar receita
+        notificação receita
+        pesquisar receita
 
 
 na branch versao-fanuel tem o front-end de:

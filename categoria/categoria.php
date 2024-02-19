@@ -35,9 +35,9 @@ $dadosCat = $stmt_categoria->fetchAll(PDO::FETCH_ASSOC);
     <img src="./../imagens/logo-finanç-branco.png" alt="">
     <div class="paginas">
     <ul>
-        <li><a href="/Proz/receita/receita.php">Receitas</a></li>
-        <li><a href="despesa/despesa.php">Despesas</a></li>
-        <li><a href="categoria/categoria.php">Categorias</a></li>
+        <li><a href="./../receita/receita.php">Receitas</a></li>
+        <li><a href="./../despesa/despesa.php">Despesas</a></li>
+        <li><a href="./../categoria/categoria.php">Categorias</a></li>
         <li><a href="#">Controle Finaceiro</a></li>    
     </ul>
   </div>

@@ -50,15 +50,9 @@ header img {
 
 /* Fim do header e inicio do main*/
 
-main {
-    /* display: flex; */
-    /* border: #000 solid 1px; */
-    height: 70vh;    
-}
-
 .formulario {
     color: #fff;
-    background:rgb(0, 80, 229);
+    background: rgb(0, 80, 229);
     font-size: 40px;
     font-family: Arial, Helvetica, sans-serif;
     padding: 12px;
@@ -68,13 +62,18 @@ main {
 }
 
 .input-categoria {
+    font-size: 22px;
     height: 25px;
     width: 18rem;
 }
 
 .botao-categoria {
-    padding: 5px;
-    border-radius: 5px;
+    padding: 8px;
+    border-radius: 8px;
+    font-size: 20px;
+    font-weight: 600;
+    background: rgb(136, 0, 255);
+    color: white;
 }
 
 .categoriaSalvas {
