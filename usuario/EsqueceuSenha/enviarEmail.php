@@ -37,11 +37,11 @@ if ($resultado) {
         // Aqui está o link para a página que você deseja enviar por e-mail
         $link_pagina = "http://localhost/Proz/usuario/EsqueceuSenha/redefinirSenha.php";
 
-        $mail->Subject = 'Link para confirmação de conta';
+        $mail->Subject = 'Link para redefinição de senha';
         $mail->Body = "
             <h3>Prezado(a) {$resultado['nome']},</h3>
             <p>Por favor, clique no botão abaixo para redefinir sua senha:</p>
-            <p><a href='{$link_pagina}'><button style='background-color: #4CAF50; color: white; padding: 15px 32px; text-align: center; display: inline-block; font-size: 16px;'>Confirmar conta</button></a></p>
+            <p><a href='{$link_pagina}'><button style='background-color: #4CAF50; color: white; padding: 15px 32px; text-align: center; display: inline-block; font-size: 16px;'>Redefinir Senha</button></a></p>
             <p>Não compartilhe esse email com ninguém.</p>
             <p>Atenciosamente,</p>
             <p>Finança Fácil</p>

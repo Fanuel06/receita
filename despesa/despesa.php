@@ -69,8 +69,8 @@ foreach ($despesas_a_pagar as $despesa) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../styles/styleda-receita.css">
   <title>Despesas</title>
-  <link rel="stylesheet" href="../styles/style-despesa.css">
 </head>
 
 <body>
@@ -84,6 +84,21 @@ foreach ($despesas_a_pagar as $despesa) {
               echo " ($total_notificacoes)"; ?>
           </a></li>
         <li><a href="../pag-inicial.html">Voltar para a página de login</a></li>
+        <li>
+          <form action="pesquisarDespesa.php" method="GET"> <!-- Alteração aqui -->
+            <!-- Adicione este trecho de código onde deseja colocar o menu suspenso na página receita.php -->
+            <label for="categoria">Pesquisar Receitas por Categoria:</label>
+            <select name="categoria" id="categoria" required>
+              <option value="">Selecione uma categoria</option>
+              <?php foreach ($dadosCat as $categoria): ?>
+                <option value="<?= $categoria['id'] ?>">
+                  <?= $categoria['descricao'] ?>
+                </option>
+              <?php endforeach; ?>
+            </select>
+            <button type="submit">Pesquisar</button>
+          </form>
+        </li>
       </ul>
     </nav>
   </header>
@@ -134,7 +149,7 @@ foreach ($despesas_a_pagar as $despesa) {
     </section>
 
     <section class="tabela">
-    <table style="background-color: #6495ED;">
+      <table style="background-color: #6495ED;">
         <thead>
           <tr>
             <th>Número</th>

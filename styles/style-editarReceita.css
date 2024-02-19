@@ -1,0 +1,98 @@
+/* CSS para a segunda página HTML */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: rgb(0, 80, 229);
+    color: #fff;
+    padding: 10px 20px;
+}
+
+nav ul li a {
+    display: flex;
+    background: rgb(29, 108, 255);
+    color: aliceblue;
+    text-decoration: none;
+    padding: 15px;
+    border: 2px solid black;
+    border-radius: 0 20px 0 20px;
+    font-weight: 600;
+    transition: all 1s;
+    box-shadow: 5px 5px 10px 0 #000;
+}
+
+nav ul {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    display: flex;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #ccc;
+}
+
+main {
+    padding: 20px;
+}
+
+.formulario {
+    background-color: rgb(0, 80, 229);
+    color: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 3px solid #000;
+}
+
+.formulario label {
+    font-size: 20px;
+}
+
+.formulario input[type="text"],
+.formulario input[type="number"],
+.formulario select,
+.formulario input[type="date"] {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+.formulario button[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.formulario button[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+/* Estilizando o formulário de edição */
+.formulario input[type="hidden"] {
+    display: none; /* Oculta o campo de input hidden */
+}

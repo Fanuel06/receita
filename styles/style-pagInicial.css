@@ -1,0 +1,214 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    margin-bottom: -20px;
+    display: flex;
+    position: relative;
+    height: 11rem;
+    background: rgb(29, 108, 255);
+    justify-content: space-between; /* Adiciona espaço entre os elementos */
+    align-items: center; /* Alinha os itens verticalmente */
+}
+
+.banner-container {
+    position: relative;
+    left: 30rem;
+    bottom: 0.65rem;
+    width: 25rem;
+    height: 10.5rem;
+}
+
+header img {
+    display: inline;
+    height: 10.5rem;
+    margin: 10px; /* Reduzi a margem para manter os banners mais próximos */
+    transition: all 2s; /* Transição de 2 segundos */
+}
+
+/* Adicione a mesma transição para a classe .logo se desejar */
+.logo {
+    margin-left: 8rem;
+}
+
+.paginas {
+    display: flex;
+    flex-direction: column;
+    width: 20rem;
+    margin: 1em;
+}
+
+.paginas ul {
+    display: flex;
+    flex-direction: column;
+}
+
+.paginas ul li {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem 2rem;
+    font-size: 1.5rem;
+    background: transparent;
+    color: aliceblue;
+    cursor: pointer;
+}
+.paginas h1{
+    color: rgb(29, 108, 255);
+    text-decoration: none;
+    padding: 15px 30px;
+    font-weight: 600;
+    transition: all 1s;
+}
+.paginas ul li a {
+    display: flex;
+    background: rgb(29, 108, 255);
+    color: aliceblue;
+    text-decoration: none;
+    padding: 15px;
+    border: 2px solid black;
+    border-radius: 0 20px 0 20px;
+    font-weight: 600;
+    transition: all 1s;
+    box-shadow: 5px 5px 10px 0 #000;
+}
+
+.paginas ul li a:hover {
+    background: rgb(7, 75, 200);
+    transform: scale(1.1);
+}
+
+/* Fim do header e inicio do main*/
+
+main {
+    display: flex;
+    flex-direction: row; /* Para alinhar os elementos horizontalmente */
+    justify-content: center; /* Centraliza os elementos horizontalmente */
+    align-items: center; /* Centraliza os elementos verticalmente */
+}
+
+.container {
+    margin-top: 3rem;
+    color: white;
+    background: rgb(29, 108, 255);
+    width: 70%;
+    height: 27rem;
+    border-radius: 20px; /* Adiciona bordas arredondadas */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adiciona sombra */
+    display: flex; /* Permite centralizar o conteúdo verticalmente */
+    justify-content: left; /* Centraliza o conteúdo horizontalmente */
+    align-items: left; /* Centraliza o conteúdo verticalmente */
+    padding: 20px; /* Adiciona um espaçamento interno */
+    flex-direction: column; /* Alinha o conteúdo em coluna */
+}
+
+.container img {
+    max-width: 100%; /* Define a largura máxima da imagem como 100% */
+    height: auto; /* Mantém a proporção da imagem */
+    border-radius: 10px; /* Adiciona bordas arredondadas à imagem */
+    margin-bottom: 20px; /* Adiciona margem inferior */
+}
+
+.slogan {
+    width: 40%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+.slogan h1 {
+    color: #fff;
+    text-align: center;
+    margin: 12px 0 0 0;
+    flex-direction: column;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 40px;
+    background: rgb(89, 12, 231);
+    font-weight: 550;
+}
+
+.img-slogan {
+    height: 20rem;
+    align-self: center;
+    margin: 0;
+}
+
+.beneficios {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+}
+
+.banner-container {
+    margin-right: auto;
+}
+
+.menu .menu-options {
+    display: none;
+    position: relative;
+    top: calc(100% + 10px);
+    right: 0;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.menu .menu-options button {
+    display: block;
+    width: 100%;
+    padding: 8px 0;
+    border: none;
+    background-color: transparent;
+    text-align: left;
+    cursor: pointer;
+}
+
+
+.menu .menu-options.show {
+    display: block;
+}
+
+.menu .menu-btn {
+    margin-right: 2rem;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    background: rgb(29, 108, 255);
+}
+
+.menu .menu-btn:hover {
+    background-color: rgba(114, 164, 255, 0.1);
+}
+
+/* Estilo para o botão "Voltar para Login" */
+.menu .menu-options button a {
+    display: flex;
+    background: rgb(29, 108, 255);
+    color: aliceblue;
+    text-decoration: none;
+    padding: 15px;
+    border: 2px solid black;
+    border-radius: 0 20px 0 20px;
+    font-weight: 600;
+    transition: all 1s;
+    box-shadow: 5px 5px 10px 0 #000;
+}
+
+.menu .menu-options button a:hover {
+    background: rgb(7, 75, 200);
+    transform: scale(1.1);
+}
+.menu .menu-btn img {
+    width: 35px; /* Defina a largura desejada */
+    height: auto; /* Mantém a proporção da imagem */
+    background-color: transparent; /* Remove o fundo branco */
+}

@@ -63,7 +63,7 @@ $notificacoes = $stmt_notificacoes->fetchAll(PDO::FETCH_ASSOC);
               <td>
                 <?= $notificacao['descricao'] ?>
               </td>
-              <td><a href="receber.php?id_notificacao=<?= $notificacao['id'] ?>&id_despesa=<?= $notificacao['id_despesa'] ?>"><i class="fa-solid fa-trash"></i></a></td>
+              <td><a href="./receber.php?id_notificacao=<?= $notificacao['id'] ?>&id_despesa=<?= $notificacao['id_despesa'] ?>">Foi pago</a></td>
             </tr>
           <?php endforeach; ?>
         </tbody>

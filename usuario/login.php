@@ -32,12 +32,39 @@ if (isset($_POST['usuario']) || isset($_POST['senha'])) {
         header("Location: ../pag-inicial.html");
 
     } else {
-        echo "<script>alert('Usuário não encontrado, verifique seu usuário e senha');</script>";
-        header("Refresh:0; url=login.php");
-        exit();
+        ?>
+        <!DOCTYPE html>
+        <html lang="pt-br">
+    
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link rel="stylesheet" href="../styles/style-enviarEmailEsqueceuSenha.css">
+            <title>Usuario não encontrado</title>
+        </head>
+    
+        <body>
+            <div class="container">
+                <div id="div1">
+                    <h1>Usuário não encontrado</h1>
+                    <p>Usuário ou senha incorretos...</p>
+                    <p>Verifique o usuário e a senha e tente novamente.</p>
+                </div>
+                <div class="link-container">
+                    <a href="./login.php">Voltar para a página de login</a>
+                </div>
+            </div>
+        </body>
+    
+        </html>
+        <?php
+        exit;
     }
+
 }
 ?>
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -45,47 +72,35 @@ if (isset($_POST['usuario']) || isset($_POST['senha'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>FinançaFacil - Login</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="./../styles/style-login.css">
 </head>
 
 <body>
-    <h1>Acesse sua conta</h1>
 
-    <form action="" method="POST">
-        <p>
-            <label>Usuario</label>
-            <input type="text" name="usuario" required>
-        </p>
-        <p>
-            <label>Senha</label>
-            <input id="senhaInput" type="password" name="senha" required>
-            <span id="togglePassword" class="password-toggle" onclick="togglePasswordVisibility()">
-                <img src="lock_icon.png" alt="Mostrar Senha">
-            </span>
-        </p>
-        <p>
-            <button type="submit">Entrar</button>
-        </p>
-        <p><a href="./EsqueceuSenha/esqueceuSenha.html">Esqueci minha senha</a></p>
+    <div class="login">
+        <h2>FinançaFacil - Login</h2>
+        <form action="" method="POST">
+            <div class="inputBx">
+                <input type="text" name="usuario" placeholder="Usuario">
+            </div>
 
-        <h1>Não tem uma conta ?</h1>
-        <a href="criarusuario.php">Criar conta</a>
-    </form>
+            <div class="inputBx">
+                <input id="senhaInput" type="password" name="senha" placeholder="Senha">
+            </div>
 
-    <script>
-        function togglePasswordVisibility() {
-            var senhaInput = document.getElementById("senhaInput");
-            var toggleIcon = document.getElementById("togglePassword").getElementsByTagName("img")[0];
+            <div class="inputBx">
+                <button type="submit">Entrar</button>
+            </div>
 
-            if (senhaInput.type === "password") {
-                senhaInput.type = "text";
-                toggleIcon.src = "unlock_icon.png";
-            } else {
-                senhaInput.type = "password";
-                toggleIcon.src = "lock_icon.png";
-            }
-        }
-    </script>
+            <div class="links">
+                <a class="criar-conta" href="criarusuario.php">Criar conta</a>
+                <a class="esqueceu-senha" href="./EsqueceuSenha/esqueceuSenha.html">Esqueceu sua senha?</a>
+            </div>
+        </form>
+    </div>
+
 </body>
 
 </html>

@@ -24,20 +24,23 @@ $dadosCat = $stmt_categoria->fetchAll(PDO::FETCH_ASSOC);
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>Categorias</title>
-  <link rel="stylesheet" href="./styles/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="./../styles/reset.css">
+  <link rel="stylesheet" href="./../styles/style-categoria.css">
 </head>
 
 <body>
   <header>
-    <nav>
-      <ul class="rem">
-        <li><a href="..//receita/receita.php">Receitas</a></li>
-        <li><a href="#">Despesas</a></li>
-        <li><a href="#">Categorias</a></li>
-      </ul>
-    </nav>
+    <img src="./../imagens/logo-finanç-branco.png" alt="">
+    <div class="paginas">
+    <ul>
+        <li><a href="/Proz/receita/receita.php">Receitas</a></li>
+        <li><a href="despesa/despesa.php">Despesas</a></li>
+        <li><a href="categoria/categoria.php">Categorias</a></li>
+        <li><a href="#">Controle Finaceiro</a></li>    
+    </ul>
+  </div>
   </header>
 
   <main>
@@ -45,17 +48,18 @@ $dadosCat = $stmt_categoria->fetchAll(PDO::FETCH_ASSOC);
       <form action="./cadastrarCategoria.php" method="get">
 
         <label>
-          Categoria
-          <input type="text" name="descricao" required>
+          <p>Categoria</p>
+          <input class="input-categoria" type="text" name="descricao" required>
         </label>
         <label>
-          <button type="submit">Adicionar</button>
+          <button class="botao-categoria" type="submit">Adicionar</button>
         </label>
       </form>
     </section>
+
     <section class="categoriaSalvas">
       <?php if (!empty($dadosCat)): ?>
-        <table>
+        <table class="tabela">
           <thead>
             <tr>
               <th>Categorias</th>
@@ -65,10 +69,11 @@ $dadosCat = $stmt_categoria->fetchAll(PDO::FETCH_ASSOC);
           <tbody>
             <?php foreach ($dadosCat as $categoria): ?>
               <tr>
-                <td>
+                <td class="conteudo-tabela">
                   <?= $categoria['descricao'] ?>
                 </td>
-                <td>
+
+                <td class="td-opcoes">
                   <?php if ($categoria['id'] != 1 && $categoria['id'] != 2 && $categoria['id'] != 3 && $categoria['id'] != 4): ?>
                     <a href="./deletarCategoria.php?id=<?= $categoria['id'] ?>">
                       <i class="fa-solid fa-trash"></i>
@@ -94,6 +99,11 @@ $dadosCat = $stmt_categoria->fetchAll(PDO::FETCH_ASSOC);
       <?php endif; ?>
     </section>
   </main>
+
+  <footer>
+    <p class="copy"><i class="bi bi-c-circle">Todos os direitos reservados.</i></p>
+  </footer>
+
   <script>
     function EditarCategoriaJS() {
       alert("Não é possível editar categorias padrões.");

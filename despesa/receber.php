@@ -35,6 +35,6 @@ if (!empty($id_notificacao)) {
   $stmt_delete_notificacao->execute();
 }
 
-header("Location: notificacoes.php");
+header("Location: ./notificacoesDespesa.php");
 exit;
 ?>

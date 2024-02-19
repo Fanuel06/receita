@@ -33,11 +33,27 @@ if (isset($_POST['codigo_verificacao']) && isset($_SESSION['codigo_verificacao']
         <?php
         exit;
     } else {
-        echo "Código de verificação incorreto. Por favor, tente novamente.";
+        ?>
+        <!DOCTYPE html>
+        <html lang="pt-br">
+
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <script>
+                alert("Código de verificação incorreto. Por favor, tente novamente.");
+                window.history.back();
+            </script>
+        </head>
+
+        <body>
+        </body>
+
+        </html>
+        <?php
+        exit;
     }
 } else {
     echo "Código de verificação não foi submetido.";
 }
-header("Location: login.php");
-exit;
 ?>

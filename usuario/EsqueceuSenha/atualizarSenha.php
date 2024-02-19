@@ -20,11 +20,14 @@ if ($resultado) {
     $stmt_atualizar_senha->bindParam(":senha", $nova_senha);
     $stmt_atualizar_senha->bindParam(":usuario", $usuario);
     $stmt_atualizar_senha->execute();
-    echo "Sua senha foi atualizada com sucesso.";
-    ?>
-    <a href="../login.php">Voltar para a página de Login</a>
-    <?php
+
+    // Mostrar o alerta
+    echo '<script>alert("Sua senha foi atualizada com sucesso.");';
+    // Redirecionar para a página de login após clicar em OK
+    echo 'window.location.href = "../login.php";</script>';
 } else {
-    echo "Usuário não encontrado.";
+    echo '<script>alert("Usuario não encontrado. Tente novamente");';
+    // Redirecionar para a página de login após clicar em OK
+    echo 'window.location.href = "redefinirSenha.php";</script>';
 }
 ?>

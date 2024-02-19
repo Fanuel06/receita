@@ -29,6 +29,7 @@ $stmt_categoria->bindParam(':user_id', $user_id, PDO::PARAM_INT);
 $stmt_categoria->execute();
 $dadosCat = $stmt_categoria->fetchAll(PDO::FETCH_ASSOC);
 
+// Verificar se há receitas a receber cuja data foi atingida
 $sql_receitas_a_receber = "SELECT * FROM receita WHERE id_do_usuario = :user_id AND status_pago = 'A-receber' AND data_mvto <= CURDATE()";
 $stmt_receitas_a_receber = $pdo->prepare($sql_receitas_a_receber);
 $stmt_receitas_a_receber->bindParam(':user_id', $user_id, PDO::PARAM_INT);
@@ -71,7 +72,7 @@ foreach ($receitas_a_receber as $receita) {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Receitas</title>
-  <link rel="stylesheet" href="../styles/style-receita.css">
+  <link rel="stylesheet" href="../styles/styleda-receita.css">
 </head>
 
 <body>
@@ -80,7 +81,6 @@ foreach ($receitas_a_receber as $receita) {
       <ul class="rem">
         <li><a href="../despesa/despesa.php">Despesas</a></li>
         <li><a href="../categoria/categoria.php">Categorias</a></li>
-        <li><a href="./controlefinanceiro.php">controle</a></li>
         <li><a href="notificacoesReceita.php">Notificações
             <?php if ($total_notificacoes > 0)
               echo " ($total_notificacoes)"; ?>
@@ -151,7 +151,7 @@ foreach ($receitas_a_receber as $receita) {
     </section>
 
     <section class="tabela">
-      <table class="table">
+      <table>
         <thead>
           <tr>
             <th>Número</th>

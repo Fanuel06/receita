@@ -39,7 +39,7 @@ $html .= 'tr:hover { background-color: #ddd; }';
 $html .= '</style>';
 $html .= '</head>';
 $html .= '<body>';
-$html .= '<h1>Relatório de Receitas</h1>';
+$html .= '<h1>Relatório de Depesas</h1>';
 $html .= '<table>';
 $html .= '<thead><tr><th>Número</th><th>Descrição</th><th>Valor</th><th>Status</th><th>Data</th></tr></thead>';
 $html .= '<tbody>';
@@ -66,5 +66,5 @@ $dompdf->setPaper('A4', 'portrait');
 $dompdf->render();
 
 // Saída do PDF para o navegador
-$dompdf->stream('relatorio_receitas.pdf', array('Attachment' => 0));
+$dompdf->stream('relatorio_despesas.pdf', array('Attachment' => 0));
 ?>

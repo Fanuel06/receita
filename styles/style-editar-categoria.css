@@ -1,32 +1,28 @@
-* {
-    margin: 0;
-    padding: 0;
+body {
+
+    overflow-y: hidden;
 }
 
 header {
     display: flex;
     position: relative;
-    height: 18rem;
+    height: 10rem;
     background: rgb(0, 80, 229);
 }
 
 header img {
     display: inline;
-    height: 17rem;
+    height: 10rem;
     margin: 10px 25px;
     transform: scale(1.2);
 }
 
 .paginas {
     display: flex;
-    flex-direction: column;
-    width: 10rem;
-    margin: 1em;
 }
 
 .paginas ul {
     display: flex;
-    flex-direction: column;
 }
 
 .paginas ul li {
@@ -56,57 +52,55 @@ header img {
     background: rgb(7, 75, 200);
     transform: scale(1.1);
 }
-
 /* Fim do header e inicio do main*/
 
 main {
-    position: relative;
-    height: 32rem;
+    height: 70vh;
+    margin-top: 100px;
+    margin-bottom: -190px;
 }
 
-.container {
+.formulario {
     display: flex;
-    position: absolute;
-    background: gray;
-    right: 5%;
-    top: 0;
-    width: 70%;
-    height: 30rem;
-}
-
-.slogan {
-    width: 40%;
-    height: auto;
-    margin: 0 0 0 300px;
-}
-
-.slogan h1 {
     color: #fff;
-    text-align: center;
-    margin: 12px 0 0 0;
-    flex-direction: column;
-    text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
+    background: rgb(0, 80, 229);
     font-size: 40px;
-    background: rgb(89, 12, 231);
-    /* padding: 18px; */
-    font-weight: 550;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 12px;
+    margin: 50px 12px 0 12px;
+    width: 96.8%;
+    border: #000 solid 3px;
 }
 
-.img-slogan {
-    height: 20rem;
-    align-items: center;
-    margin: 0 115px;
+.paragrafo {
+    font-size: 40px;
 }
 
-/* FIm do slogan*/
-
-.beneficios {
-    width: 60%;
+.input {
+    font-size: 22px;
+    height: 2rem;
 }
 
+.botao-categoria {
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 20px;
+    font-weight: 600;
+    background: rgb(0, 25, 100);
+    color: rgb(255, 255, 255);
+}
 
+/* css do footer*/
 footer {
-    height: 100px;
-    background: rgb(0, 80, 229);
+    background: rgb(0, 80, 229);
+    height: 10rem;
+    bottom: 0;
+    width: 100%;
+}
+
+.copy {
+    color: #fff;
+    font-size: 22px;
+    text-align: center;
+    padding: 25px 0 0 0;
 }
