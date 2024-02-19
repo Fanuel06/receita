@@ -95,6 +95,7 @@ $total_despesa_mai = $despesa_mai['total_despesa_mai'] ?: 0;
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Controle Financeiro</title>
   <link rel="stylesheet" href="../styles/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
   <script type="text/javascript">
     google.charts.load('current', { 'packages': ['corechart', 'bar'] });
@@ -162,6 +163,20 @@ $total_despesa_mai = $despesa_mai['total_despesa_mai'] ?: 0;
       drawMaterialChart();
     };
   </script>
+
+<style>
+    /* Estilo para centralizar o gráfico */
+    body {
+      display: relative;
+      text-align: center;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+      height: 10vh;
+      width: 100%;
+      bottom: 0;
+      }
+  </style>
 </head>
 
 <body>
@@ -179,6 +194,11 @@ $total_despesa_mai = $despesa_mai['total_despesa_mai'] ?: 0;
 <button id="change-chart">Mudar para o Clássico</button>
 <br><br>
   <div id="chart_div" style="width: 800px; height: 500px;"></div>
+  
+  <footer>
+        <p class="copy"><i class="bi bi-c-circle">Todos os direitos reservados.</i></p>
+    </footer>
+
   <script src="https://kit.fontawesome.com/561265e797.js" crossorigin="anonymous"></script>
 </body>
 
