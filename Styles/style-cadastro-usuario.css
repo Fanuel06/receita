@@ -1,0 +1,82 @@
+body {
+    border: none;
+    margin: none;
+    display: flex;
+    justify-content: center;
+    background: linear-gradient(to left, rgb(49, 92, 250), rgb(29, 127, 255), rgba(40, 182, 243, 0.967));
+}
+
+.login {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    border: 2px solid black;
+    padding: 3rem 12rem;
+    height: 30rem;
+    margin-top: 3%;
+    border-radius: 40px;
+    box-shadow: 5px 5px 10px 0 #000;
+    background: linear-gradient(to right, rgb(8, 0, 243), rgb(9, 100, 219), rgba(109, 22, 201, 0.967));
+    transition: transform 3s ease;
+}
+
+.login:hover {
+    transform: scale(1.05);
+
+}
+/* background: linear-gradient(to right, rgba(109, 22, 201, 0.967), rgb(9, 100, 219),  rgb(8, 0, 243)); */
+
+.login h2 {
+    font-size: 2em;
+    color: #fff;
+}
+
+.login form {
+    margin: 0 80px 0 0 ;
+}
+
+.login .inputBx {
+    position: relative;
+    width: 100%;
+}
+
+.login .inputBx input {
+    position: relative;
+    width: 100%;
+    padding: 12px 20px;
+    background: transparent;
+    border: 2px solid #fff;
+    border-radius: 40px;
+    font-size: 1.2em;
+    box-shadow: none;
+    outline: none;
+    font-weight: 500;
+}
+
+.login .inputBx button[type="submit"] {
+    margin-left: 40px;
+    border-radius: 40px;
+    height: 30px;
+    width: 100%;
+    background: #0078ff;
+    background: linear-gradient(45deg, #ff357a, #fff172);
+    border: none;
+    cursor: pointer;
+    transition: transform 1.2s;
+}
+
+.login .inputBx button[type="submit"]:hover {
+    transform: scale(1.1);
+}
+
+.login .inputBx input::placeholder {
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.login input {
+    display: flex;
+    margin: 20px;
+}
