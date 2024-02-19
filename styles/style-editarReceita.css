@@ -71,12 +71,16 @@ main {
     border: #000 solid 3px;
 }
 
+.formulario label {
+    font-size: 25px;
+}
+
 .paragrafo {
     font-size: 40px;
 }
 
-.input {
-    font-size: 22px;
+input, select {
+    font-size: 17px;
     height: 2rem;
 }
 
@@ -87,6 +91,7 @@ main {
     font-weight: 600;
     background: rgb(0, 25, 100);
     color: rgb(255, 255, 255);
+    cursor: pointer;
 }
 
 /* css do footer*/

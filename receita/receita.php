@@ -86,7 +86,7 @@ foreach ($receitas_a_receber as $receita) {
         <li><a href="./../receita/receita.php">Receitas</a></li>
         <li><a href="./../despesa/despesa.php">Despesas</a></li>
         <li><a href="./../categoria/categoria.php">Categorias</a></li>
-        <li><a href="#">Controle Finaceiro</a></li>    
+        <li><a href="./../controle-financeiro/graficos.php">Controle Finaceiro</a></li>    
         <li><a href="notificacoesDespesa.php">Notificações
           <?php if ($total_notificacoes > 0)
               echo " ($total_notificacoes)"; ?>

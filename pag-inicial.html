@@ -1,30 +1,75 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/reset.css">
     <link rel="stylesheet" href="./styles/style-pag-inicial.css">
     <title>Página Inicial</title>
 </head>
+
 <body>
-    <header> 
-        <h2>Controles de Gastos</h2>
+    <header>
+        <img src="./Imagens/logo-finanç-branco.png" alt="logo" class="logo">
+        <div class="banner-container">
+            <img src="" alt="" class="banner">
+        </div>
+        <div class="menu">
+            <button class="menu-btn"><img src="./Imagens/menu-bar2.png" alt=""></button>
+            <div class="menu-options">
+                <button><a href="./usuario/login.php">Voltar para a página de Login</a></button>
+            </div>
+        </div>
     </header>
 
     <main>
-        <img style="width: 14rem;" src="./Imagens/Calculadora-img.jpg" alt="">
-        <ul>
-            <div class="opcoes">
-            <li><a href="./receita/receita.php">Receitas</a></li>
-            <li><a href="despesa/despesa.php">Despesas</a></li>
-            <li><a href="./categoria/categoria.php">Categorias</a></li>
-            <li><a href="#">Controle Finaceiro</a></li>
-            </div>
-        </ul>
+        <div class="paginas">
+            <ul>
+                <li>
+                    <h1>Páginas</h1>
+                </li>
+                <li><a href="receita/receita.php">Receitas</a></li>
+                <li><a href="despesa/despesa.php">Despesas</a></li>
+                <li><a href="categoria/categoria.php">Categorias</a></li>
+                <li><a href="controle-financeiro/graficos.php">Controle Finaceiro</a></li>
+            </ul>
+        </div>
+        <div class="container">
+            <h1>Quais são os benefícios de controlar as finanças? </h1>
+            <br><br>
+            <h2>Estabilidade financeira</h2>
+            <p> Quando sabemos administrar nosso dinheiro, conseguimos manter nossas finanças equilibradas. Isso quer
+                dizer que temos noção do quanto podemos gastar e como guardar dinheiro para situações inesperadas.</p>
+            <br><br>
+            <h2>Realização de sonhos</h2>
+            <p> Com o controle financeiro, podemos definir metas claras e possíveis de alcançar. Seja para comprar um
+                carro, viajar ou pagar um curso, o controle financeiro é essencial para tirar nossos planos do papel.
+            </p>
+            <br><br>
+            <h2>Menos problemas com dívidas</h2>
+            <p>Quando não controlamos nosso dinheiro, corremos o risco de nos endividarmos e de termos sérios problemas
+                financeiros. Com um planejamento cuidadoso, conseguimos viver dentro das nossas possibilidades e, mesmo
+                assim, planejar o nosso futuro.</p>
+            <br><br>
+            <h2>Menos estresse no dia a dia</h2>
+            <p>Com um planejamento adequado, podemos nos preparar antecipadamente para lidar com eventos como doenças,
+                acidentes, pagamento de mensalidades, viagens em família, entre outros, que podem gerar muito estresse,
+                quando há endividamento, e dificuldade para pagar as contas.</p>
+        </div>
     </main>
 
-    <footer>
+    <!-- Script JavaScript -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const menuBtn = document.querySelector('.menu-btn');
+            const menuOptions = document.querySelector('.menu-options');
 
-    </footer>
+            menuBtn.addEventListener('click', function () {
+                menuOptions.classList.toggle('show');
+            });
+        });
+    </script>
 </body>
+
 </html>
