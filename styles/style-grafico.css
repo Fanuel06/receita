@@ -1,0 +1,118 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap");
+
+.header {
+    display: flex;
+    position: relative;
+    height: 10rem;
+    background: rgb(0, 80, 229);
+}
+
+.header img {
+    display: inline;
+    height: 10rem;
+    margin: 10px 25px;
+    transform: scale(1.2);
+}
+
+.paginas {
+    display: flex;
+}
+
+.paginas ul {
+    display: flex;
+}
+
+.paginas ul li {
+    display: flex;
+    flex-direction: column;
+    margin: 2rem 2rem;
+    font-size: 1.5rem;
+    background: transparent;
+    color: aliceblue;
+    cursor: pointer;
+}
+
+.paginas ul li a {
+    display: flex;
+    background: rgb(29, 108, 255);
+    color: aliceblue;
+    text-decoration: none;
+    padding: 15px;
+    border: 2px solid black;
+    border-radius: 0 20px 0 20px;
+    font-weight: 600;
+    transition: all 1s;
+    box-shadow: 5px 5px 10px 0 #000;
+}
+
+header {
+    display: flex;
+    position: relative;
+    height: 10rem;
+    background: rgb(0, 80, 229);
+}
+
+header img {
+    display: inline;
+    height: 10rem;
+    margin: 10px 25px;
+    transform: scale(1.2);
+}
+
+.paginas {
+    display: flex;
+}
+
+.paginas ul {
+    display: flex;
+}
+
+.paginas ul li {
+    display: flex;
+    flex-direction: column;
+    margin: 2rem 2rem;
+    font-size: 1.5rem;
+    background: transparent;
+    color: aliceblue;
+    cursor: pointer;
+}
+
+.paginas ul li a {
+    display: flex;
+    background: rgb(29, 108, 255);
+    color: aliceblue;
+    text-decoration: none;
+    padding: 15px;
+    border: 2px solid black;
+    border-radius: 0 20px 0 20px;
+    font-weight: 600;
+    transition: all 1s;
+    box-shadow: 5px 5px 10px 0 #000;
+}
+
+.paginas ul li a:hover {
+    background: rgb(7, 75, 200);
+    transform: scale(1.1);
+}
+
+/* Fim do header e inicio do main*/
+
+main {
+    /* display: flex; */
+    /* border: #000 solid 1px; */
+    height: 70vh;
+}
+
+footer {
+    background: rgb(0, 80, 229);
+    position: relative;
+    height: 10vh;
+    width: 100%;
+}
+
+.copy {
+    color: #fff;
+    font-size: 22px;
+    text-align: center;
+    padding: 25px 0 0 0;
+}

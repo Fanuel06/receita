@@ -41,13 +41,13 @@ if (isset($_GET['categoria']) && !empty($_GET['categoria'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pesquisar Receitas por Categoria</title>
-    <link rel="stylesheet" href="../styles/style-pesquisar-receitas.css">
+    <link rel="stylesheet" href="../styles/style-pesquisar.css">
 </head>
 
 <body>
-    <header>
-        <nav>
-            <ul>
+    <header class="header">
+        <nav class="nav">
+            <ul class="nav-list">
                 <li><a href="../receita/receita.php">Receitas</a></li>
                 <li><a href="../despesa/despesa.php">Despesas</a></li>
                 <li><a href="../categoria/categoria.php">Categorias</a></li>
@@ -55,13 +55,11 @@ if (isset($_GET['categoria']) && !empty($_GET['categoria'])) {
             </ul>
         </nav>
     </header>
-    <main>
-
-        </form>
-
-        <?php if (!empty($dados)): ?>
+    <main class="main">
+        <section class="results">
+            <?php if (!empty($dados)): ?>
             <h2>Resultados da Pesquisa:</h2>
-            <table>
+            <table class="table">
                 <thead>
                     <tr>
                         <th>Número</th>
@@ -74,29 +72,22 @@ if (isset($_GET['categoria']) && !empty($_GET['categoria'])) {
                 <tbody>
                     <?php $numero = 1; ?>
                     <?php foreach ($dados as $dado): ?>
-                        <tr>
-                            <td>
-                                <?= $numero++ ?>
-                            </td>
-                            <td>
-                                <?= isset($dado['descricao']) ? $dado['descricao'] : '' ?>
-                            </td>
-                            <td>
-                                <?= isset($dado['valor']) ? $dado['valor'] : '' ?>
-                            </td>
-                            <td>
-                                <?= isset($dado['status_pago']) ? $dado['status_pago'] : '' ?>
-                            </td>
-                            <td>
-                                <?= isset($dado['data_mvto']) ? $dado['data_mvto'] : '' ?>
-                            </td>
-                        </tr>
+                    <tr>
+                        <td><?= $numero++ ?></td>
+                        <td><?= isset($dado['descricao']) ? $dado['descricao'] : '' ?></td>
+                        <td><?= isset($dado['valor']) ? $dado['valor'] : '' ?></td>
+                        <td><?= isset($dado['status_pago']) ? $dado['status_pago'] : '' ?></td>
+                        <td><?= isset($dado['data_mvto']) ? $dado['data_mvto'] : '' ?></td>
+                    </tr>
                     <?php endforeach; ?>
                 </tbody>
             </table>
-        <?php endif; ?>
+            <?php endif; ?>
         </section>
     </main>
+    <footer class="footer">
+        <p class="copy">Seu texto de direitos autorais aqui</p>
+    </footer>
 </body>
 
 </html>

@@ -1,0 +1,154 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap");
+
+.header {
+    display: flex;
+    position: relative;
+    height: 10rem;
+    background: rgb(0, 80, 229);
+}
+
+.header img {
+    display: inline;
+    height: 10rem;
+    margin: 10px 25px;
+    transform: scale(1.2);
+}
+
+.paginas {
+    display: flex;
+}
+
+.paginas ul {
+    display: flex;
+}
+
+.paginas ul li {
+    display: flex;
+    flex-direction: column;
+    margin: 2rem 2rem;
+    font-size: 1.5rem;
+    background: transparent;
+    color: aliceblue;
+    cursor: pointer;
+}
+
+.paginas ul li a {
+    display: flex;
+    background: rgb(29, 108, 255);
+    color: aliceblue;
+    text-decoration: none;
+    padding: 15px;
+    border: 2px solid black;
+    border-radius: 0 20px 0 20px;
+    font-weight: 600;
+    transition: all 1s;
+    box-shadow: 5px 5px 10px 0 #000;
+}
+
+header {
+    display: flex;
+    position: relative;
+    height: 10rem;
+    background: rgb(0, 80, 229);
+}
+
+header img {
+    display: inline;
+    height: 10rem;
+    margin: 10px 25px;
+    transform: scale(1.2);
+}
+
+
+input,
+select,
+button {
+    border-radius: 8px;
+    width: auto;
+    font-size: 18px;
+}
+
+.tabela {
+    height: 80vh;
+    background: rgb(0, 80, 229);
+    border: #000 solid 3px;
+    margin: 12px;
+    padding: 12px;
+}
+
+.tabela table {
+    width: 100%;
+    background: #fff;
+}
+
+.tabela th {
+    border: #000 solid 3px;
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.tabela table td {
+    font-size: 20px;
+    border: #000 solid 2px;
+    padding: 6px;
+    width: 130vh;
+}
+
+.td-opcoes {
+    border: #000 solid 2px;
+    padding: 10px;
+    width: 65vh;
+    text-align: center;
+}
+
+.fa-solid {
+    margin: 0 25px;
+}
+
+
+
+/* Estilos adicionais para a página de notificações */
+main {
+    padding: 20px;
+}
+
+.notificacoes {
+    color: #000000;
+    background: rgb(0, 80, 229);
+}
+
+.notificacoes h1 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.notificacoes table {
+    width: 100%;
+    background: #fff;
+}
+
+.notificacoes th,
+.notificacoes td {
+    border: #000 solid 2px;
+    padding: 10px;
+}
+
+.notificacoes td a {
+    color: #000000;
+    text-decoration: none;
+}
+
+
+footer {
+    background: rgb(0, 80, 229);
+    position: relative;
+    height: 10vh;
+    width: 100%;
+}
+
+.copy {
+    color: #fff;
+    font-size: 22px;
+    text-align: center;
+    padding: 25px 0 0 0;
+}

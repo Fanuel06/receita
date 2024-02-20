@@ -72,39 +72,42 @@ foreach ($receitas_a_receber as $receita) {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Receitas</title>
-  <link rel="stylesheet" href="../styles/styleda-receita.css">
+  <link rel="stylesheet" href="./../styles/reset.css">
+  <link rel="stylesheet" href="./../styles/style-receita.css">
 </head>
 
 <body>
+
+
   <header>
-    <nav>
-      <ul class="rem">
-        <li><a href="../despesa/despesa.php">Despesas</a></li>
-        <li><a href="../categoria/categoria.php">Categorias</a></li>
-        <li><a href="notificacoesReceita.php">Notificações
+    <img src="./../imagens/logo-finanç-branco.png" alt="">
+    <div class="paginas">
+      <ul>
+        <li><a href="./../receita/receita.php">Receitas</a></li>
+        <li><a href="./../despesa/despesa.php">Despesas</a></li>
+        <li><a href="./../categoria/categoria.php">Categorias</a></li>
+        <li><a href="../grafico.php">Controle Finaceiro</a></li>
+        <li><a href="./notificacoesDespesa.php">Notificações
             <?php if ($total_notificacoes > 0)
               echo " ($total_notificacoes)"; ?>
           </a></li>
-        <li><a href="../pag-inicial.html">Voltar para a página de login</a></li>
-        <li>
-          <form action="pesquisarReceita.php" method="GET"> <!-- Alteração aqui -->
-            <!-- Adicione este trecho de código onde deseja colocar o menu suspenso na página receita.php -->
-            <label for="categoria">Pesquisar Receitas por Categoria:</label>
-            <select name="categoria" id="categoria" required>
-              <option value="">Selecione uma categoria</option>
-              <?php foreach ($dadosCat as $categoria): ?>
-                <option value="<?= $categoria['id'] ?>">
-                  <?= $categoria['descricao'] ?>
-                </option>
-              <?php endforeach; ?>
-            </select>
-            <button type="submit">Pesquisar</button>
-          </form>
-        </li>
+        <li><a href="../pag-inicial.html">Voltar para a página inicial</a></li>
       </ul>
-    </nav>
+    </div>
   </header>
   <main>
+    <form class="pesquisar-receita" action="pesquisarReceita.php" method="GET">
+      <label for="categoria">Pesquisar Receitas por Categoria:</label>
+      <select name="categoria" id="categoria" required>
+        <option value="">Selecione uma categoria</option>
+        <?php foreach ($dadosCat as $categoria): ?>
+          <option value="<?= $categoria['id'] ?>">
+            <?= $categoria['descricao'] ?>
+          </option>
+        <?php endforeach; ?>
+      </select>
+      <button type="submit">Pesquisar</button>
+    </form>
     <section class="formulario">
       <form action="./cadastrarReceita.php" method="get">
 

@@ -23,6 +23,7 @@ $stmt_notificacoes->execute();
 $notificacoes = $stmt_notificacoes->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -30,19 +31,22 @@ $notificacoes = $stmt_notificacoes->fetchAll(PDO::FETCH_ASSOC);
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Notificações</title>
-  <link rel="stylesheet" href="../styles/style-notificacoes.css">
+  <link rel="stylesheet" href="../styles/reset.css">
+  <link rel="stylesheet" href="../styles/style-notificacao.css">
 </head>
 
 <body>
-  <header>
-    <nav>
-      <ul>
-        <li><a href="../despesa/despesa.php">Despesas</a></li>
-        <li><a href="../categoria/categoria.php">Categorias</a></li>
-        <li><a href="../usuario/login.php">Voltar para a página de login</a></li>
-      </ul>
-    </nav>
-  </header>
+<header>
+    <img src="./../Imagens/logo-finanç-branco.png" alt="">
+        <div class="paginas">
+            <ul>
+                <li><a href="../receita/receita.php">Receitas</a></li>
+                <li><a href="./despesa.php">Despesas</a></li>
+                <li><a href="../categoria/categoria.php">Categorias</a></li>
+                <li><a href="../graficos.php">Controle Finaceiro</a></li>    
+            </ul>
+        </div>
+</header>
   <main>
     <section class="notificacoes">
       <h1>Notificações</h1>
@@ -63,7 +67,7 @@ $notificacoes = $stmt_notificacoes->fetchAll(PDO::FETCH_ASSOC);
               <td>
                 <?= $notificacao['descricao'] ?>
               </td>
-              <td><a href="./receber.php?id_notificacao=<?= $notificacao['id'] ?>&id_despesa=<?= $notificacao['id_despesa'] ?>">Foi pago</a></td>
+              <td><a href="receber.php?id_notificacao=<?= $notificacao['id'] ?>&id_despesa=<?= $notificacao['id_despesa'] ?>"><i class="fa-solid fa-trash"></i></a></td>
             </tr>
           <?php endforeach; ?>
         </tbody>

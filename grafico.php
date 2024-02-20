@@ -3,7 +3,7 @@ require "./config.php";
 session_start();
 
 if (!isset($_SESSION['id'])) {
-  header("Location: ../usuario/login.php");
+  header("Location: ./usuario/login.php");
   exit;
 }
 
@@ -94,7 +94,7 @@ $total_despesa_mai = $despesa_mai['total_despesa_mai'] ?: 0;
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Controle Financeiro</title>
-  <link rel="stylesheet" href="../styles/style.css">
+  <link rel="stylesheet" href="./styles/style-grafico.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
   <script type="text/javascript">
@@ -163,7 +163,15 @@ $total_despesa_mai = $despesa_mai['total_despesa_mai'] ?: 0;
       drawMaterialChart();
     };
   </script>
-
+  <style>
+    input,
+    select,
+    button {
+    border-radius: 8px;
+    width: auto;
+    font-size: 18px;
+    }
+  </style>
 <style>
     /* Estilo para centralizar o gráfico */
     body {
@@ -184,16 +192,16 @@ $total_despesa_mai = $despesa_mai['total_despesa_mai'] ?: 0;
     <img src="./../Imagens/logo-finanç-branco.png" alt="">
         <div class="paginas">
             <ul>
-                <li><a href="/finn/receita/receita.php">Receitas</a></li>
-                <li><a href="/finn/despesa/despesa.php">Despesas</a></li>
-                <li><a href="/finn/categoria/categoria.php">Categorias</a></li>
+                <li><a href="/Proz/receita/receita.php">Receitas</a></li>
+                <li><a href="despesa/despesa.php">Despesas</a></li>
+                <li><a href="categoria/categoria.php">Categorias</a></li>
                 <li><a href="graficos.php">Controle Finaceiro</a></li>    
             </ul>
         </div>
 </header>
 <button id="change-chart">Mudar para o Clássico</button>
 <br><br>
-  <div id="chart_div" style="width: 800px; height: 500px;"></div>
+<div id="chart_div" style="width: 800px; height: 600px; margin: 0 auto;"></div>
   
   <footer>
         <p class="copy"><i class="bi bi-c-circle">Todos os direitos reservados.</i></p>

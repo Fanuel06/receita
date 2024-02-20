@@ -38,7 +38,7 @@ $dadosCat = $stmt_categoria->fetchAll(PDO::FETCH_ASSOC);
         <li><a href="/Proz/receita/receita.php">Receitas</a></li>
         <li><a href="despesa/despesa.php">Despesas</a></li>
         <li><a href="categoria/categoria.php">Categorias</a></li>
-        <li><a href="#">Controle Finaceiro</a></li>    
+        <li><a href="../grafico.php">Controle Finaceiro</a></li>    
     </ul>
   </div>
   </header>

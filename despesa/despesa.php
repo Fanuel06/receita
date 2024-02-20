@@ -69,141 +69,149 @@ foreach ($despesas_a_pagar as $despesa) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../styles/styleda-receita.css">
   <title>Despesas</title>
+  <link rel="stylesheet" href="./../styles/reset.css">
+  <link rel="stylesheet" href="./../styles/style-receita.css">
 </head>
 
 <body>
+
+
   <header>
-    <nav>
-      <ul class="rem">
-        <li><a href="../receita/receita.php">receitas</a></li>
-        <li><a href="../categoria/categoria.php">Categorias</a></li>
-        <li><a href="notificacoesDespesa.php">Notificações
+    <img src="./../imagens/logo-finanç-branco.png" alt="">
+    <div class="paginas">
+      <ul>
+        <li><a href="./../receita/receita.php">Receitas</a></li>
+        <li><a href="./../despesa/despesa.php">Despesas</a></li>
+        <li><a href="./../categoria/categoria.php">Categorias</a></li>
+        <li><a href="../grafico.php">Controle Finaceiro</a></li>
+        <li><a href="./notificacoesDespesa.php">Notificações
             <?php if ($total_notificacoes > 0)
               echo " ($total_notificacoes)"; ?>
           </a></li>
-        <li><a href="../pag-inicial.html">Voltar para a página de login</a></li>
-        <li>
-          <form action="pesquisarDespesa.php" method="GET"> <!-- Alteração aqui -->
-            <!-- Adicione este trecho de código onde deseja colocar o menu suspenso na página receita.php -->
-            <label for="categoria">Pesquisar Receitas por Categoria:</label>
-            <select name="categoria" id="categoria" required>
-              <option value="">Selecione uma categoria</option>
+        <li><a href="../pag-inicial.html">Voltar para a página inicial</a></li>
+      </ul>
+    </div>
+  </header>
+  <main>
+    <form class="pesquisar-receita" action="pesquisarDespesa.php" method="GET">
+      <label for="categoria">Pesquisar Despesa por Categoria:</label>
+      <select name="categoria" id="categoria" required>
+        <option value="">Selecione uma categoria</option>
+        <?php foreach ($dadosCat as $categoria): ?>
+          <option value="<?= $categoria['id'] ?>">
+            <?= $categoria['descricao'] ?>
+          </option>
+        <?php endforeach; ?>
+      </select>
+      <button type="submit">Pesquisar</button>
+    </form>
+      <section class="formulario">
+        <form action="./cadastrarDespesa.php" method="get">
+
+          <label>
+            Descrição
+            <input type="text" name="descricao" required>
+          </label>
+
+          <label>
+            Valor
+            <input type="text" name="valor" required pattern="^[1-9]\d*(\.\d+)?$"
+              title="Por favor, insira um número válido acima de 0 (ex: 10 ou 10.50 lembre de utilizar '.' ao invés de ','">
+          </label>
+
+          <label>
+            Categoria
+            <select name="categoria" required>
               <?php foreach ($dadosCat as $categoria): ?>
                 <option value="<?= $categoria['id'] ?>">
                   <?= $categoria['descricao'] ?>
                 </option>
               <?php endforeach; ?>
             </select>
-            <button type="submit">Pesquisar</button>
-          </form>
-        </li>
-      </ul>
-    </nav>
-  </header>
-  <main>
-    <section class="formulario">
-      <form action="./cadastrarDespesa.php" method="get">
-
-        <label>
-          Descrição
-          <input type="text" name="descricao" required>
-        </label>
-
-        <label>
-          Valor
-          <input type="text" name="valor" required pattern="^[1-9]\d*(\.\d+)?$"
-            title="Por favor, insira um número válido acima de 0 (ex: 10 ou 10.50 lembre de utilizar '.' ao invés de ','">
-        </label>
-
-        <label>
-          Categoria
-          <select name="categoria" required>
-            <?php foreach ($dadosCat as $categoria): ?>
-              <option value="<?= $categoria['id'] ?>">
-                <?= $categoria['descricao'] ?>
+          </label>
+          <label>
+            Status
+            <select name="status" required>
+              <option value="Pago">
+                Pago
               </option>
-            <?php endforeach; ?>
-          </select>
-        </label>
-        <label>
-          Status
-          <select name="status" required>
-            <option value="Pago">
-              Pago
-            </option>
-            <option value="A-pagar">
-              A pagar
-            </option>
-          </select>
-        </label>
-        <label>
-          Data
-          <input type="date" name="data_mvto" required>
-        </label>
+              <option value="A-pagar">
+                A pagar
+              </option>
+            </select>
+          </label>
+          <label>
+            Data
+            <input type="date" name="data_mvto" required>
+          </label>
 
-        <button type="submit">Adicionar</button>
+          <button type="submit">Adicionar</button>
 
-      </form>
-    </section>
+        </form>
+      </section>
 
-    <section class="tabela">
-      <table style="background-color: #6495ED;">
-        <thead>
-          <tr>
-            <th>Número</th>
-            <th>Descrição</th>
-            <th>Valor</th>
-            <th>Categoria</th>
-            <th>Status</th>
-            <th>Data</th>
-            <th>Opções</th>
-            <th><a target="_blank" href="emitirPDF.php">Emitir Relatório</a></th>
-          </tr>
-        </thead>
-        <tbody>
-          <?php $numero = 1; ?>
-          <?php foreach ($dados as $dado): ?>
+      <section class="tabela">
+        <table>
+          <thead>
             <tr>
-              <td>
-                <?= $numero++ ?>
-              </td>
-              <td>
-                <?= $dado['descricao'] ?>
-              </td>
-              <td>
-                <?= $dado['valor'] ?>
-              </td>
-              <td>
-                <?php
-                $categoriaEncontrada = '';
-                foreach ($dadosCat as $categoria) {
-                  if ($categoria['id'] == $dado['categoria_id']) {
-                    $categoriaEncontrada = $categoria['descricao'];
-                    break;
-                  }
-                }
-                echo $categoriaEncontrada;
-                ?>
-              </td>
-              <td>
-                <?= $dado['status_pago'] ?>
-              </td>
-              <td>
-                <?= $dado['data_mvto'] ?>
-              </td>
-              <td>
-                <a href="deletarDespesa.php?id=<?= $dado['id'] ?>"><i class="fa-solid fa-trash"></i></a>
-                <a href="editarDespesa.php?id=<?= $dado['id'] ?>"><i class="fa-solid fa-pen-to-square"></i></a>
-              </td>
+              <th>Número</th>
+              <th>Descrição</th>
+              <th>Valor</th>
+              <th>Categoria</th>
+              <th>Status</th>
+              <th>Data</th>
+              <th>Opções</th>
+              <th><a target="_blank" href="emitirPDF.php">Emitir Relatório</a></th>
             </tr>
-          <?php endforeach; ?>
-        </tbody>
-      </table>
-    </section>
-  </main>
-  <script src="https://kit.fontawesome.com/561265e797.js" crossorigin="anonymous"></script>
+          </thead>
+          <tbody>
+            <?php $numero = 1; ?>
+            <?php foreach ($dados as $dado): ?>
+              <tr>
+                <td>
+                  <?= $numero++ ?>
+                </td>
+                <td>
+                  <?= $dado['descricao'] ?>
+                </td>
+                <td>
+                  <?= $dado['valor'] ?>
+                </td>
+                <td>
+                  <?php
+                  $categoriaEncontrada = '';
+                  foreach ($dadosCat as $categoria) {
+                    if ($categoria['id'] == $dado['categoria_id']) {
+                      $categoriaEncontrada = $categoria['descricao'];
+                      break;
+                    }
+                  }
+                  echo $categoriaEncontrada;
+                  ?>
+                </td>
+                <td>
+                  <?= $dado['status_pago'] ?>
+                </td>
+                <td>
+                  <?= $dado['data_mvto'] ?>
+                </td>
+                <td class="td-opcoes">
+                  <a href="deletarDespesa.php?id=<?= $dado['id'] ?>"><i class="fa-solid fa-trash"></i></a>
+                  <a href="editarDespesa.php?id=<?= $dado['id'] ?>"><i class="fa-solid fa-pen-to-square"></i></a>
+                </td>
+              </tr>
+            <?php endforeach; ?>
+          </tbody>
+        </table>
+      </section>
+    </main>
+
+    <footer>
+      <p class="copy"><i class="bi bi-c-circle">Todos os direitos reservados.</i></p>
+    </footer>
+
+    <script src="https://kit.fontawesome.com/561265e797.js" crossorigin="anonymous"></script>
 </body>
 
 </html>

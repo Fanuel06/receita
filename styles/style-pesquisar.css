@@ -1,0 +1,99 @@
+.header {
+    display: flex;
+    position: relative;
+    height: 10rem;
+    background: rgb(0, 80, 229);
+}
+
+.header img {
+    display: inline;
+    height: 10rem;
+    margin: 10px 25px;
+    transform: scale(1.2);
+}
+
+.nav {
+    display: flex;
+}
+
+.nav-list {
+    display: flex;
+}
+
+.nav-list li {
+    display: flex;
+    flex-direction: column;
+    margin: 2rem 1.5rem;
+    background: transparent;
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+}
+
+.nav-list li a {
+    display: flex;
+    background: rgb(29, 108, 255);
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    padding: 15px;
+    border: 2px solid black;
+    border-radius: 0 20px 0 20px;
+    font-weight: 600;
+    transition: all 1s;
+    box-shadow: 5px 5px 10px 0 #000;
+}
+
+.nav-list li a:hover {
+    background: rgb(7, 75, 200);
+    transform: scale(1.1);
+}
+
+.main {
+    color: #000000;
+    background: rgb(0, 80, 229);
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 12px;
+    margin: 10px 1.5rem 0 12px;
+    width: 96.8%;
+    border: #000 solid 3px;
+}
+
+.results {
+    height: 80vh;
+    background: rgb(0, 80, 229);
+    border: #000 solid 3px;
+    margin: 12px;
+    padding: 12px;
+}
+
+.table {
+    width: 100%;
+    background: #fff;
+}
+
+.table th {
+    border: #000 solid 3px;
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.table td {
+    font-size: 20px;
+    border: #000 solid 2px;
+    padding: 6px;
+    width: 130vh;
+}
+
+.footer {
+    background: rgb(0, 80, 229);
+    position: relative;
+    height: 10vh;
+    width: 100%;
+}
+
+.copy {
+    color: #000000;
+    font-size: 22px;
+    text-align: center;
+    padding: 25px 0 0 0;
+}
